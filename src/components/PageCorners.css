@@ -1,0 +1,55 @@
+/* ============================================================
+   Shared page corners — brand (TL) + intro (TR)
+   Rendered globally so they appear on every route.
+   ============================================================ */
+
+.page-corner {
+  position: fixed;
+  z-index: 60; /* above page content, below the navbar (100) */
+  pointer-events: none;
+  user-select: none;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
+}
+
+.page-corner--brand {
+  top: clamp(18px, 2.5vw, 32px);
+  left: clamp(18px, 3vw, 36px);
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(11px, 0.95vw, 13px);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: #b5b5b5;
+}
+
+.page-corner--brand span {
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.page-corner--intro {
+  top: clamp(18px, 2.5vw, 32px);
+  right: clamp(18px, 3vw, 36px);
+  max-width: 320px;
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(10px, 0.8vw, 12px);
+  line-height: 1.55;
+  text-align: right;
+  font-weight: 400;
+  color: #b5b5b5;
+}
+
+@media (max-width: 600px) {
+  .page-corner--intro {
+    max-width: 200px;
+    font-size: 10px;
+    line-height: 1.5;
+  }
+}
+
+@media (max-width: 420px) {
+  .page-corner--intro {
+    max-width: 160px;
+    font-size: 9px;
+  }
+}

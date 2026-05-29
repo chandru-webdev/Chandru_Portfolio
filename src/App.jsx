@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import Navbar from './components/Navbar.jsx'
+import PageCorners from './components/PageCorners.jsx'
 import Skills from './components/Skills.jsx'
 import HomePage from './pages/HomePage.jsx'
 import AboutPage from './pages/AboutPage.jsx'
@@ -40,6 +41,7 @@ function AppShell() {
         </motion.div>
       )}
 
+      <PageCorners />
       <Navbar />
     </>
   )

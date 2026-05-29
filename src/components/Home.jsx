@@ -32,30 +32,6 @@ const Home = () => {
 
   return (
     <section className="home">
-      {/* Top Left logo */}
-      <motion.div
-        className="home__brand"
-        variants={fadeUp}
-        initial="hidden"
-        animate="show"
-        custom={0.1}
-      >
-        © Code by <span>chandru</span>
-      </motion.div>
-
-      {/* Top Right intro */}
-      <motion.p
-        className="home__intro"
-        variants={fadeUp}
-        initial="hidden"
-        animate="show"
-        custom={0.2}
-      >
-        Passionate Creative Designer and Developer, dedicated to crafting
-        innovative solutions and exceptional digital experiences through modern
-        technologies
-      </motion.p>
-
       {/* Center portrait */}
       <motion.div
         className="home__portrait"
