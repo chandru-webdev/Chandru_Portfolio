@@ -1,0 +1,131 @@
+/* ============================================================
+   Skills Ribbon — 30px colored icons drifting diagonally
+   toward the bottom-right corner at 45°
+   ============================================================ */
+
+.skills-ribbon {
+  position: absolute;
+  /* Anchor the strip tight in the bottom-right corner.
+     After -45° rotation the diagonal runs from the RIGHT edge of the
+     viewport (≈ 100vw / 80vh) down to the BOTTOM edge (≈ 80vw / 100vh).
+     Width is sized to show ONLY 4 icons at once. */
+  top: 90%;
+  left: 90%;
+  width: 280px;
+  height: 50px;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  transform-origin: center center;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 5;
+
+  /* Fade BOTH ends so icons softly enter at the right edge and softly
+     exit at the bottom edge. */
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    #000 18%,
+    #000 82%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    #000 18%,
+    #000 82%,
+    transparent 100%
+  );
+}
+
+.skills-ribbon__track {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  width: max-content;
+  height: 100%;
+  /* Standard animation (0 → -50%) → content drifts toward -X.
+     With rotate(-45deg), -X axis points DOWN-LEFT → icons enter at the
+     RIGHT edge of the viewport and exit at the BOTTOM edge. */
+  animation: skills-drift 28s linear infinite;
+  will-change: transform;
+}
+
+@keyframes skills-drift {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.skills-ribbon:hover .skills-ribbon__track {
+  animation-play-state: paused;
+}
+
+/* --- Icon: 30px --- */
+.skills-ribbon__icon {
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  line-height: 1;
+  pointer-events: auto;
+  filter:
+    drop-shadow(0 4px 8px rgba(0, 0, 0, 0.55))
+    drop-shadow(0 0 10px rgba(255, 255, 255, 0.05));
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.skills-ribbon__icon:hover {
+  transform: scale(1.25);
+  filter:
+    drop-shadow(0 6px 14px rgba(0, 0, 0, 0.7))
+    drop-shadow(0 0 18px currentColor);
+}
+
+/* Responsive — keep ~4 icons visible at all sizes */
+@media (max-width: 900px) {
+  .skills-ribbon {
+    width: 240px;
+    height: 44px;
+    top: 88%;
+    left: 88%;
+  }
+  .skills-ribbon__icon {
+    width: 26px;
+    height: 26px;
+    font-size: 26px;
+  }
+  .skills-ribbon__track {
+    gap: 22px;
+    animation-duration: 24s;
+  }
+}
+
+@media (max-width: 600px) {
+  .skills-ribbon {
+    width: 200px;
+    height: 38px;
+    top: 86%;
+    left: 86%;
+  }
+  .skills-ribbon__icon {
+    width: 22px;
+    height: 22px;
+    font-size: 22px;
+  }
+  .skills-ribbon__track {
+    gap: 18px;
+    animation-duration: 20s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skills-ribbon__track {
+    animation: none;
+  }
+}
