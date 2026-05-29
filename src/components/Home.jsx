@@ -1,18 +1,6 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import {
-  FiHome,
-  FiUser,
-  FiCode,
-  FiFolder,
-  FiAward,
-  FiBriefcase,
-  FiFileText,
-  FiGithub,
-  FiMail,
-  FiArrowDownRight,
-} from 'react-icons/fi'
-import Skills from './Skills.jsx'
+import { FiArrowDownRight } from 'react-icons/fi'
 import './Home.css'
 
 const ROLES = [
@@ -21,18 +9,6 @@ const ROLES = [
   'Front End Developer',
   'Freelancer',
   'Backend Developer',
-]
-
-const NAV_ITEMS = [
-  { id: 'home', label: 'Home', icon: <FiHome /> },
-  { id: 'about', label: 'About', icon: <FiUser /> },
-  { id: 'skills', label: 'Skills', icon: <FiCode /> },
-  { id: 'projects', label: 'Projects', icon: <FiFolder /> },
-  { id: 'certificates', label: 'Certificates', icon: <FiAward /> },
-  { id: 'internship', label: 'Internship', icon: <FiBriefcase /> },
-  { id: 'resume', label: 'Resume', icon: <FiFileText /> },
-  { id: 'github', label: 'Github', icon: <FiGithub /> },
-  { id: 'contact', label: 'Contact', icon: <FiMail /> },
 ]
 
 const fadeUp = {
@@ -45,7 +21,6 @@ const fadeUp = {
 }
 
 const Home = () => {
-  const [active, setActive] = useState('home')
   const [roleIndex, setRoleIndex] = useState(0)
 
   useEffect(() => {
@@ -94,15 +69,6 @@ const Home = () => {
           className="profile-placeholder"
         />
         <div className="home__portrait-glow" />
-      </motion.div>
-
-      {/* Diagonal skills ribbon */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.5, delay: 0.6, ease: 'easeOut' }}
-      >
-        <Skills />
       </motion.div>
 
       {/* Right tag near image */}
@@ -158,35 +124,6 @@ const Home = () => {
           </span>
         </div>
       </motion.div>
-
-      {/* Floating glass navbar */}
-      <motion.nav
-        className="home__nav"
-        initial={{ opacity: 0, y: 40, x: '-50%' }}
-        animate={{ opacity: 1, y: 0, x: '-50%' }}
-        transition={{ duration: 0.9, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        aria-label="Primary"
-      >
-        <ul className="home__nav-list">
-          {NAV_ITEMS.map((item) => {
-            const isActive = active === item.id
-            return (
-              <li key={item.id} className="home__nav-item">
-                <button
-                  type="button"
-                  className={`home__nav-btn ${isActive ? 'is-active' : ''}`}
-                  onClick={() => setActive(item.id)}
-                  aria-label={item.label}
-                  aria-current={isActive ? 'page' : undefined}
-                >
-                  <span className="home__nav-icon">{item.icon}</span>
-                  <span className="home__nav-tip">{item.label}</span>
-                </button>
-              </li>
-            )
-          })}
-        </ul>
-      </motion.nav>
     </section>
   )
 }

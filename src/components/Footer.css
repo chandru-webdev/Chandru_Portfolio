@@ -1,0 +1,119 @@
+/* ============================================================
+   Footer — full-width black, no border radius,
+   bare arrow icon (no circle)
+   ============================================================ */
+
+.footer {
+  width: 100vw;
+  margin: 0;
+  background: #000000;
+  border-radius: 0;
+  padding: 0;
+  position: relative;
+  z-index: 50;
+}
+
+.footer__card {
+  width: 100%;
+  max-width: none;
+  background: #000000;
+  border-radius: 0;
+  padding: 40px clamp(20px, 5vw, 60px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  box-shadow: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.footer__text {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+  flex: 1;
+}
+
+.footer__cta {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(16px, 1.5vw, 20px);
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+}
+
+.footer__label {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(12px, 1.1vw, 15px);
+  font-weight: 500;
+  color: #8a8a8a;
+  letter-spacing: 0.005em;
+  white-space: nowrap;
+}
+
+.footer__name {
+  font-family: 'Inter', 'Space Grotesk', sans-serif;
+  font-size: clamp(40px, 9vw, 96px);
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.035em;
+  line-height: 0.95;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.footer__arrow {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  color: #ffffff;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  font-size: 52px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.35s ease, transform 0.35s ease;
+}
+
+.footer__arrow-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  will-change: transform;
+}
+
+.footer__arrow:hover {
+  color: #d8d8d8;
+  transform: scale(1.1);
+}
+
+/* ------------- Responsive ------------- */
+@media (max-width: 640px) {
+  .footer__card {
+    padding: 28px 18px;
+    gap: 14px;
+  }
+
+  .footer__name {
+    font-size: clamp(34px, 12vw, 64px);
+  }
+
+  .footer__arrow {
+    width: 56px;
+    height: 56px;
+    font-size: 40px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer__arrow {
+    transition: none;
+  }
+}

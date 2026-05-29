@@ -4,11 +4,10 @@
    ============================================================ */
 
 .skills-ribbon {
-  position: absolute;
-  /* Anchor the strip tight in the bottom-right corner.
-     After -45° rotation the diagonal runs from the RIGHT edge of the
-     viewport (≈ 100vw / 80vh) down to the BOTTOM edge (≈ 80vw / 100vh).
-     Width is sized to show ONLY 4 icons at once. */
+  position: fixed;
+  /* Anchor the strip tight in the bottom-right corner of the VIEWPORT.
+     Stays in place across page scroll so it's an ambient overlay
+     on every route that renders it. */
   top: 90%;
   left: 90%;
   width: 280px;
@@ -90,6 +89,7 @@
 /* Responsive — keep ~4 icons visible at all sizes */
 @media (max-width: 900px) {
   .skills-ribbon {
+    position: fixed;
     width: 240px;
     height: 44px;
     top: 88%;
@@ -108,6 +108,7 @@
 
 @media (max-width: 600px) {
   .skills-ribbon {
+    position: fixed;
     width: 200px;
     height: 38px;
     top: 86%;

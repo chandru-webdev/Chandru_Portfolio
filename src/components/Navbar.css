@@ -1,0 +1,136 @@
+/* ============================================================
+   Shared floating glass navbar (used on every route)
+   ============================================================ */
+
+.navbar {
+  position: fixed;
+  left: 50%;
+  bottom: clamp(20px, 3vh, 36px);
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  backdrop-filter: blur(22px) saturate(160%);
+  -webkit-backdrop-filter: blur(22px) saturate(160%);
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.7);
+  transition: box-shadow 0.4s ease;
+  width: max-content;
+  max-width: calc(100vw - 32px);
+}
+
+.navbar:hover {
+  box-shadow: 0 40px 70px -20px rgba(0, 0, 0, 0.8);
+}
+
+.navbar__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.navbar__item {
+  display: flex;
+}
+
+.navbar__btn {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 18px;
+  background: none;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.3s ease, background 0.3s ease, transform 0.3s ease;
+}
+
+.navbar__btn:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-3px);
+}
+
+.navbar__btn.is-active {
+  color: #fff;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.06));
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.25) inset,
+    0 0 22px rgba(255, 255, 255, 0.35),
+    0 0 40px rgba(150, 200, 255, 0.25);
+}
+
+.navbar__btn.is-active::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 10px #fff;
+}
+
+.navbar__icon {
+  display: inline-flex;
+}
+
+/* Tooltip */
+.navbar__tip {
+  position: absolute;
+  bottom: calc(100% + 12px);
+  left: 50%;
+  transform: translate(-50%, 4px);
+  background: rgba(20, 20, 20, 0.9);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  padding: 6px 10px;
+  border-radius: 6px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.navbar__btn:hover .navbar__tip {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+@media (max-width: 600px) {
+  .navbar {
+    padding: 8px 10px;
+    bottom: 16px;
+  }
+  .navbar__btn {
+    width: 38px;
+    height: 38px;
+    font-size: 16px;
+  }
+  .navbar__list {
+    gap: 2px;
+  }
+}
+
+@media (max-width: 420px) {
+  .navbar__btn {
+    width: 34px;
+    height: 34px;
+    font-size: 14px;
+  }
+}
