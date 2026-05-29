@@ -6,6 +6,30 @@ import './Footer.css'
 const Footer = () => {
   return (
     <footer className="footer">
+      {/* Get in touch divider with blue circle on the right */}
+      <motion.div
+        className="footer__touch"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-60px' }}
+        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+      >
+        <span className="footer__touch-line" aria-hidden="true" />
+        <Link
+          to="/contact"
+          className="footer__touch-circle"
+          aria-label="Get in touch — go to contact page"
+        >
+          <motion.span
+            animate={{ rotate: 360 }}
+            transition={{ duration: 18, repeat: Infinity, ease: 'linear' }}
+            className="footer__touch-ring"
+            aria-hidden="true"
+          />
+          <span className="footer__touch-text">Get in touch</span>
+        </Link>
+      </motion.div>
+
       <motion.div
         className="footer__card"
         initial={{ opacity: 0, y: 40 }}
