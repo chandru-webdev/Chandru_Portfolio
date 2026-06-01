@@ -1,0 +1,543 @@
+/* ============================================================
+   Projects Page — grid of project cards on a dot-grid canvas
+   with dashed connector lines tying the layout together.
+   ============================================================ */
+
+.projects-page {
+  width: 100%;
+  min-height: 100vh;
+  background: #000;
+  color: #d8d8d8;
+  padding: clamp(80px, 12vh, 140px) clamp(20px, 5vw, 60px) 160px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Dotted "graph paper" canvas — visual cue that all projects are connected */
+.projects-page::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 22px 22px;
+  background-position: 0 0;
+  mask-image: radial-gradient(
+    ellipse at 50% 40%,
+    #000 0%,
+    rgba(0, 0, 0, 0.7) 60%,
+    transparent 100%
+  );
+  -webkit-mask-image: radial-gradient(
+    ellipse at 50% 40%,
+    #000 0%,
+    rgba(0, 0, 0, 0.7) 60%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.projects-page::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(700px 400px at 15% 5%, rgba(255, 255, 255, 0.05), transparent 60%),
+    radial-gradient(900px 600px at 85% 100%, rgba(255, 255, 255, 0.04), transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.projects-page__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1240px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(30px, 4vw, 50px);
+}
+
+/* ----- Header ----- */
+.projects-page__head {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 20px;
+  position: relative;
+}
+
+.projects-page__label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  color: #6b6b6b;
+  grid-column: 1 / -1;
+}
+
+.projects-page__title {
+  margin: 6px 0 0;
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-size: clamp(36px, 6vw, 76px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.02;
+  color: #ffffff;
+  max-width: 720px;
+}
+
+.projects-page__title-accent {
+  background: linear-gradient(180deg, #ffffff 0%, #6b6b6b 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.projects-page__btn {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+  justify-self: end;
+  align-self: end;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px dashed rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  color: #d8d8d8;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease, background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+}
+
+.projects-page__btn:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+}
+
+.projects-page__btn-arrow {
+  transition: transform 0.3s ease;
+}
+
+.projects-page__btn:hover .projects-page__btn-arrow {
+  transform: translate(2px, -2px);
+}
+
+/* ============================================================
+   Grid (with dashed connectors)
+   ============================================================ */
+
+.projects-grid {
+  --gap: 18px;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: var(--gap);
+  position: relative;
+}
+
+/* Dashed connector overlay — gives the "all connected" feel */
+.projects-grid::before {
+  content: '';
+  position: absolute;
+  inset: 12px;
+  background:
+    linear-gradient(
+      90deg,
+      transparent calc(50% - 0.5px),
+      rgba(255, 255, 255, 0.07) calc(50% - 0.5px),
+      rgba(255, 255, 255, 0.07) calc(50% + 0.5px),
+      transparent calc(50% + 0.5px)
+    ),
+    linear-gradient(
+      0deg,
+      transparent calc(50% - 0.5px),
+      rgba(255, 255, 255, 0.07) calc(50% - 0.5px),
+      rgba(255, 255, 255, 0.07) calc(50% + 0.5px),
+      transparent calc(50% + 0.5px)
+    );
+  pointer-events: none;
+  z-index: 0;
+  mask-image: radial-gradient(
+    ellipse at 50% 50%,
+    #000 0%,
+    rgba(0, 0, 0, 0.55) 65%,
+    transparent 100%
+  );
+  -webkit-mask-image: radial-gradient(
+    ellipse at 50% 50%,
+    #000 0%,
+    rgba(0, 0, 0, 0.55) 65%,
+    transparent 100%
+  );
+}
+
+/* Card spans — mimics the asymmetric layout in your reference */
+.project-card--large   { grid-column: span 6; }
+.project-card--medium  { grid-column: span 3; }
+.project-card--small   { grid-column: span 2; }
+.project-card--cta     { grid-column: span 2; }
+
+@media (max-width: 1024px) {
+  .project-card--large   { grid-column: span 6; }
+  .project-card--medium  { grid-column: span 6; }
+  .project-card--small   { grid-column: span 3; }
+  .project-card--cta     { grid-column: span 3; }
+}
+
+@media (max-width: 640px) {
+  .project-card--large,
+  .project-card--medium,
+  .project-card--small,
+  .project-card--cta {
+    grid-column: span 6;
+  }
+}
+
+/* ============================================================
+   Card
+   ============================================================ */
+
+.project-card {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 20px;
+  background: rgba(12, 12, 12, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 22px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  overflow: hidden;
+  transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    600px 240px at 20% 0%,
+    color-mix(in srgb, var(--accent, #ffffff) 16%, transparent),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--accent, #ffffff) 45%, transparent);
+  box-shadow:
+    0 24px 50px -20px rgba(0, 0, 0, 0.65),
+    0 0 50px -10px color-mix(in srgb, var(--accent, #ffffff) 30%, transparent);
+}
+
+.project-card:hover::before {
+  opacity: 1;
+}
+
+/* ----- Preview image ----- */
+.project-card__preview {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 7;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.project-card__preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.project-card:hover .project-card__preview img {
+  transform: scale(1.03);
+}
+
+.project-card__actions--overlay {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+}
+
+.project-card--large .project-card__preview {
+  aspect-ratio: 16 / 6.5;
+}
+
+/* ----- Top row (icon strip fallback) ----- */
+.project-card__top {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background:
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--accent, #ffffff) 22%, transparent) 0%,
+      color-mix(in srgb, var(--accent, #ffffff) 4%, transparent) 100%
+    );
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  min-height: 70px;
+}
+
+.project-card__icons {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.project-card__icon {
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  background: rgba(0, 0, 0, 0.55);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
+  transition: transform 0.3s ease;
+}
+
+.project-card__icon:hover {
+  transform: scale(1.1);
+}
+
+.project-card__actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.project-card__action {
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #d8d8d8;
+  font-size: 15px;
+  text-decoration: none;
+  transition: color 0.25s ease, background 0.25s ease, transform 0.25s ease;
+}
+
+.project-card__action:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-1px);
+}
+
+/* ----- Body ----- */
+.project-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.project-card__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.project-card__title {
+  margin: 0;
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-size: clamp(17px, 1.45vw, 22px);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: #ffffff;
+  line-height: 1.15;
+}
+
+.project-card__desc {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #9a9a9a;
+}
+
+.project-card__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.project-card__chip {
+  font-size: 11px;
+  font-weight: 500;
+  padding: 4px 10px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  color: #c8c8c8;
+  white-space: nowrap;
+}
+
+/* ----- Status badge ----- */
+.badge {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  border-radius: 999px;
+  border: 1px solid;
+}
+
+.badge__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 8px currentColor;
+  animation: badge-pulse 2s ease-in-out infinite;
+}
+
+@keyframes badge-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.5; transform: scale(0.85); }
+}
+
+.badge--live {
+  color: #4ade80;
+  background: rgba(74, 222, 128, 0.1);
+  border-color: rgba(74, 222, 128, 0.4);
+}
+
+.badge--completed {
+  color: #fb923c;
+  background: rgba(251, 146, 60, 0.1);
+  border-color: rgba(251, 146, 60, 0.4);
+}
+
+.badge--internship {
+  color: #a78bfa;
+  background: rgba(167, 139, 250, 0.1);
+  border-color: rgba(167, 139, 250, 0.4);
+}
+
+.badge--archive {
+  color: #94a3b8;
+  background: rgba(148, 163, 184, 0.1);
+  border-color: rgba(148, 163, 184, 0.4);
+}
+
+/* ============================================================
+   CTA card
+   ============================================================ */
+
+.project-card--cta {
+  background: linear-gradient(180deg, rgba(20, 20, 20, 0.9) 0%, rgba(8, 8, 8, 0.95) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 14px;
+  border: 1px dashed rgba(255, 255, 255, 0.18);
+}
+
+.projects-page__label--card {
+  grid-column: auto;
+  color: #6b6b6b;
+}
+
+.project-card__cta-title {
+  margin: 0;
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-size: clamp(20px, 2vw, 28px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  line-height: 1.15;
+}
+
+.project-card__cta-desc {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.55;
+  color: #8a8a8a;
+}
+
+.project-card__cta-btn {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 22px;
+  background: #ffffff;
+  color: #000000;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.project-card__cta-btn:hover {
+  transform: translateY(-2px);
+  background: #e8e8e8;
+}
+
+.project-card__cta-btn svg {
+  transition: transform 0.3s ease;
+}
+
+.project-card__cta-btn:hover svg {
+  transform: translate(2px, -2px);
+}
+
+/* ============================================================
+   Responsive header
+   ============================================================ */
+
+@media (max-width: 700px) {
+  .projects-page__head {
+    grid-template-columns: 1fr;
+  }
+  .projects-page__btn {
+    grid-column: 1 / 2;
+    grid-row: 3 / 4;
+    justify-self: start;
+  }
+  .projects-page__title {
+    font-size: clamp(32px, 9vw, 48px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-card,
+  .project-card__icon,
+  .projects-page__btn,
+  .badge__dot {
+    transition: none;
+    animation: none;
+  }
+}
