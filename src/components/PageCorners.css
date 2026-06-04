@@ -14,15 +14,29 @@
 .page-corner--brand {
   top: clamp(18px, 2.5vw, 32px);
   left: clamp(18px, 3vw, 36px);
-  font-family: 'Inter', sans-serif;
-  font-size: clamp(11px, 0.95vw, 13px);
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  color: #b5b5b5;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-size: clamp(13px, 1.05vw, 16px);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+}
+
+.page-corner__avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  object-fit: cover;
+  object-position: top center;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.45);
+  flex-shrink: 0;
 }
 
 .page-corner--brand span {
-  font-weight: 600;
+  font-weight: 700;
   color: #ffffff;
 }
 
@@ -40,6 +54,17 @@
 }
 
 @media (max-width: 600px) {
+  .page-corner__avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+  }
+
+  .page-corner--brand {
+    font-size: 12px;
+    gap: 8px;
+  }
+
   .page-corner--intro {
     max-width: 200px;
     font-size: 10px;

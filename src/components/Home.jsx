@@ -41,7 +41,7 @@ const Home = () => {
       >
         <img
           src="/profile.png"
-          alt="Chandru — Creative Designer & Developer"
+          alt="Chandruuuu"
           className="profile-placeholder"
         />
         <div className="home__portrait-glow" />

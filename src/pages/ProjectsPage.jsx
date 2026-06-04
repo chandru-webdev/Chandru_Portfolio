@@ -351,6 +351,32 @@ const ProjectsPage = () => {
                       </span>
                     ))}
                   </div>
+                  {(p.github || p.live) && (
+                    <div className="project-card__links">
+                      {p.github && (
+                        <a
+                          href={p.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="project-card__link project-card__link--code"
+                        >
+                          <FiGithub aria-hidden="true" />
+                          Code
+                        </a>
+                      )}
+                      {p.live && (
+                        <a
+                          href={p.live}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="project-card__link project-card__link--live"
+                        >
+                          <FiExternalLink aria-hidden="true" />
+                          Live
+                        </a>
+                      )}
+                    </div>
+                  )}
                 </div>
               </motion.article>
             ))}

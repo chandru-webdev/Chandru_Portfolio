@@ -20,7 +20,13 @@ const PageCorners = () => {
         animate="show"
         custom={0.1}
       >
-        © Code by <span>chandru</span>
+        <img
+          src="/profile.png"
+          alt=""
+          className="page-corner__avatar"
+          draggable={false}
+        />
+        <span>Chandruuuu</span>
       </motion.div>
 
       <motion.p

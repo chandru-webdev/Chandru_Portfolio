@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import {
   FaHtml5,
@@ -149,6 +150,15 @@ const CATEGORIES = [
   },
 ]
 
+const ALL_SKILLS = CATEGORIES.reduce((acc, cat) => {
+  cat.skills.forEach((skill) => {
+    if (!acc.some((s) => s.name === skill.name)) acc.push(skill)
+  })
+  return acc
+}, [])
+
+const CAROUSEL_STEP_MS = 2200
+
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
   show: (i = 0) => ({
@@ -159,6 +169,23 @@ const fadeUp = {
 }
 
 const SkillsPage = () => {
+  const [activeIndex, setActiveIndex] = useState(0)
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % ALL_SKILLS.length)
+    }, CAROUSEL_STEP_MS)
+
+    return () => clearInterval(timer)
+  }, [])
+
+  const len = ALL_SKILLS.length
+  const visibleSkills = [
+    ALL_SKILLS[(activeIndex - 1 + len) % len],
+    ALL_SKILLS[activeIndex],
+    ALL_SKILLS[(activeIndex + 1) % len],
+  ]
+
   return (
     <>
       <section className="skills-page">
@@ -190,6 +217,40 @@ const SkillsPage = () => {
             Everything I work with day-to-day — pulled straight from the stack I&apos;ve
             shipped real projects on.
           </motion.p>
+
+          <motion.div
+            className="skills-carousel"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.28, ease: [0.22, 1, 0.36, 1] }}
+            aria-label="Skills icon carousel"
+          >
+            <div className="skills-carousel__viewport">
+              <motion.div
+                key={activeIndex}
+                className="skills-carousel__track"
+                initial={{ x: 28, opacity: 0.85 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+              >
+                {visibleSkills.map((skill, idx) => (
+                  <div
+                    key={`${skill.name}-${idx}`}
+                    className={`skills-carousel__item${idx === 1 ? ' is-center' : ' is-side'}`}
+                  >
+                    <span
+                      className="skills-carousel__icon"
+                      style={{ color: skill.color }}
+                      title={skill.name}
+                    >
+                      {skill.icon}
+                    </span>
+                    <span className="skills-carousel__name">{skill.name}</span>
+                  </div>
+                ))}
+              </motion.div>
+            </div>
+          </motion.div>
 
           <div className="skills-page__grid">
             {CATEGORIES.map((cat, idx) => (

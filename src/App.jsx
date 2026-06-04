@@ -11,6 +11,7 @@ import CertificatesPage from './pages/CertificatesPage.jsx'
 import InternshipPage from './pages/InternshipPage.jsx'
 import ResumePage from './pages/ResumePage.jsx'
 import ContactPage from './pages/ContactPage.jsx'
+import GitHubPage from './pages/GitHubPage.jsx'
 
 function AppShell() {
   const location = useLocation()
@@ -27,6 +28,7 @@ function AppShell() {
         <Route path="/internship" element={<InternshipPage />} />
         <Route path="/resume" element={<ResumePage />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/github" element={<GitHubPage />} />
         <Route path="*" element={<HomePage />} />
       </Routes>
 
