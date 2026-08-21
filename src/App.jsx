@@ -8,7 +8,7 @@ import AboutPage from './pages/AboutPage.jsx'
 import SkillsPage from './pages/SkillsPage.jsx'
 import ProjectsPage from './pages/ProjectsPage.jsx'
 import CertificatesPage from './pages/CertificatesPage.jsx'
-import InternshipPage from './pages/InternshipPage.jsx'
+import ExperiencePage from './pages/ExperiencePage.jsx'
 import ResumePage from './pages/ResumePage.jsx'
 import ContactPage from './pages/ContactPage.jsx'
 import GitHubPage from './pages/GitHubPage.jsx'
@@ -25,7 +25,8 @@ function AppShell() {
         <Route path="/skills" element={<SkillsPage />} />
         <Route path="/projects" element={<ProjectsPage />} />
         <Route path="/certificates" element={<CertificatesPage />} />
-        <Route path="/internship" element={<InternshipPage />} />
+        <Route path="/experience" element={<ExperiencePage />} />
+        <Route path="/internship" element={<ExperiencePage />} />
         <Route path="/resume" element={<ResumePage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/github" element={<GitHubPage />} />

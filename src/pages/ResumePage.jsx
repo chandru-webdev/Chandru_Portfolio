@@ -25,13 +25,13 @@ const HIGHLIGHTS = [
   },
   {
     icon: <FaGraduationCap />,
-    title: 'Internship',
-    desc: 'Accent Technosoft, Coimbatore — 3 months',
+    title: 'Experience',
+    desc: 'Huemind (Shopify Dev) & Accent Technosoft',
   },
   {
     icon: <FiLayers />,
-    title: '5+ Projects',
-    desc: 'Yumzo, AML System, Velzo e-commerce, Crypto Trading, Tastybite',
+    title: '7+ Projects',
+    desc: 'Opal Line, Yumzo, AML System, Velzo e-commerce, Crypto Trading',
   },
   {
     icon: <FiAward />,
@@ -42,9 +42,9 @@ const HIGHLIGHTS = [
 
 const STATS = [
   { value: '7.8', label: 'CGPA' },
-  { value: '5+', label: 'Projects' },
+  { value: '7+', label: 'Projects' },
   { value: '3', label: 'Certificates' },
-  { value: '2months', label: 'Experience' },
+  { value: '2mo', label: 'Shopify Exp' },
 ]
 
 const fadeUp = {

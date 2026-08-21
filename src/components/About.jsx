@@ -1,6 +1,15 @@
 import { motion } from 'framer-motion'
-import { FiArrowUpRight, FiCheck, FiMapPin } from 'react-icons/fi'
-import { FaLinkedin, FaGithub } from 'react-icons/fa'
+import {
+  FiArrowUpRight,
+  FiCheck,
+  FiMapPin,
+  FiShoppingBag,
+  FiServer,
+  FiLayout,
+  FiDatabase,
+} from 'react-icons/fi'
+import { FaLinkedin, FaGithub, FaShopify } from 'react-icons/fa'
+import { BsGem } from 'react-icons/bs'
 import './About.css'
 
 const SOCIALS = [
@@ -19,25 +28,49 @@ const SOCIALS = [
 ]
 
 const STATS = [
-  { value: '5+', label: 'Full-Stack Projects' },
-  { value: '2mo', label: 'Internship Experience' },
-  { value: '3', label: 'Certifications' },
+  { value: '7+', label: 'FULL-STACK PROJECTS' },
+  { value: '2mo', label: 'SHOPIFY EXPERIENCE' },
+  { value: '3', label: 'CERTIFICATIONS' },
   { value: '7.8', label: 'CGPA' },
 ]
 
 const TECH_STACK = [
   'Spring Boot',
   'Java',
-  'React.js',
+  'React',
   'TypeScript',
   'MySQL',
   'JWT Auth',
   'REST APIs',
   'Node.js',
   'MongoDB',
-  'Tailwind CSS',
   'Git',
   'Postman',
+  'Shopify',
+  'Liquid',
+  'GraphQL',
+  'Shopify API',
+]
+
+const CURRENTLY_WORKING = [
+  {
+    id: 'huemind',
+    icon: <FiShoppingBag />,
+    iconType: 'green',
+    title: 'Huemind Digital Marketing',
+    subtitle: 'Shopify Website Developer · Liquid · OS 2.0 · Admin API',
+    badge: 'Jul 2026 – Now',
+    badgeType: 'green',
+  },
+  {
+    id: 'opal-line',
+    icon: <BsGem />,
+    iconType: 'blue',
+    title: 'Opal Line — Jewelry ERP',
+    subtitle: 'NestJS · Prisma · PostgreSQL · React · Shopify · BullMQ',
+    badge: 'In progress',
+    badgeType: 'dim',
+  },
 ]
 
 const PRINCIPLES = [
@@ -52,6 +85,49 @@ const PRINCIPLES = [
   {
     title: 'Ship and learn fast',
     desc: 'Every project pushes me further than the last.',
+  },
+]
+
+const SKILL_CATEGORIES = [
+  {
+    title: 'Backend',
+    icon: <FiServer />,
+    skills: [
+      { name: 'Java / Spring Boot', level: 88 },
+      { name: 'REST API / JWT', level: 85 },
+      { name: 'Node.js / Express', level: 62 },
+      { name: 'NestJS', level: 58 },
+    ],
+  },
+  {
+    title: 'Frontend',
+    icon: <FiLayout />,
+    skills: [
+      { name: 'React.js', level: 85 },
+      { name: 'TypeScript', level: 72 },
+      { name: 'Tailwind CSS', level: 80 },
+      { name: 'HTML5 / CSS3', level: 90 },
+    ],
+  },
+  {
+    title: 'Shopify',
+    icon: <FaShopify />,
+    skills: [
+      { name: 'Liquid Templating', level: 68 },
+      { name: 'Online Store 2.0', level: 65 },
+      { name: 'Shopify Admin API', level: 60 },
+      { name: 'GraphQL', level: 45 },
+    ],
+  },
+  {
+    title: 'Database & Tools',
+    icon: <FiDatabase />,
+    skills: [
+      { name: 'MySQL', level: 85 },
+      { name: 'PostgreSQL / Prisma', level: 65 },
+      { name: 'MongoDB', level: 60 },
+      { name: 'Git / Docker / Postman', level: 82 },
+    ],
   },
 ]
 
@@ -123,30 +199,27 @@ const About = () => {
               <img src="/profile.png" alt="Chandru — Java Full Stack Developer" />
               <div className="about__portrait-tag">
                 <FiMapPin />
-                <span>Trichy, India</span>
+                <span>Chennai, India</span>
               </div>
             </div>
 
             <div className="about__bio">
               <p>
                 I&apos;m a <strong>Java Full Stack Developer</strong> based in
-                Trichy, India. I build end-to-end web applications — from
-                secure Spring Boot backends with JWT authentication and BCrypt
-                password hashing, to clean, responsive React frontends that
-                actually feel good to use.
+                Chennai. I build end-to-end web apps — from secure Spring Boot
+                backends to clean React frontends.
               </p>
               <p>
-                I graduated with a <strong>B.Sc. in Information Technology</strong>{' '}
-                from Karpagam Academy of Higher Education and have been
-                building real projects ever since — a full food ordering
-                platform, an AI-powered AML detection system, and a deployed
-                e-commerce storefront.
+                Currently working as a{' '}
+                <strong>Shopify Developer at Huemind</strong> and building{' '}
+                <strong>Opal Line</strong>, a full-stack jewelry ERP platform
+                for a silver brand.
               </p>
               <p>
-                I care about <em>clean architecture</em>,{' '}
-                <em>meaningful code</em>, and shipping things that work. I
-                started with a roadmap — I started with curiosity, and I&apos;ve
-                been chasing that ever since.
+                I graduated with a{' '}
+                <strong>B.Sc. in Information Technology</strong> from Karpagam
+                Academy. I care about <strong>clean architecture</strong>,{' '}
+                <strong>meaningful code</strong>, and shipping things that work.
               </p>
               <p>
                 When I&apos;m not coding, I&apos;m probably breaking something
@@ -173,7 +246,7 @@ const About = () => {
             </div>
           </motion.div>
 
-          {/* RIGHT COLUMN — stats + stack + principles */}
+          {/* RIGHT COLUMN — stats + stack + currently working + principles */}
           <motion.div
             className="about__right"
             variants={fadeUp}
@@ -204,8 +277,39 @@ const About = () => {
               </div>
             </div>
 
+            {/* Currently working on */}
+            <div className="about__working">
+              <div className="about__working-header">
+                <span className="about__working-dot" />
+                <span className="about__working-title">CURRENTLY WORKING ON</span>
+              </div>
+              <div className="about__working-items">
+                {CURRENTLY_WORKING.map((item) => (
+                  <div className="about__working-item" key={item.id}>
+                    <div
+                      className={`about__working-icon about__working-icon--${item.iconType}`}
+                    >
+                      {item.icon}
+                    </div>
+                    <div className="about__working-content">
+                      <h4 className="about__working-item-title">{item.title}</h4>
+                      <p className="about__working-item-sub">{item.subtitle}</p>
+                    </div>
+                    <div
+                      className={`about__working-badge about__working-badge--${item.badgeType}`}
+                    >
+                      {item.badge}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
             {/* Principles */}
             <div className="about__principles">
+              <span className="about__panel-title" style={{ marginBottom: '4px' }}>
+                WHAT I BELIEVE IN
+              </span>
               {PRINCIPLES.map((p) => (
                 <div className="about__principle" key={p.title}>
                   <span className="about__principle-check">
@@ -220,6 +324,66 @@ const About = () => {
             </div>
           </motion.div>
         </div>
+
+        {/* BOTTOM SECTION — SKILLS SECTION (4 CARDS) */}
+        <motion.div
+          className="about__skills"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: '-60px' }}
+          custom={0.25}
+        >
+          <div className="about__skills-header">
+            <span className="about__label">TECHNICAL PROFICIENCY</span>
+            <h3 className="about__skills-heading">Skills & Mastery</h3>
+          </div>
+
+          <div className="about__skills-grid">
+            {SKILL_CATEGORIES.map((category, catIdx) => (
+              <motion.div
+                key={category.title}
+                className="about__skill-card"
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, margin: '-40px' }}
+                custom={0.1 * catIdx}
+              >
+                <div className="about__skill-card-head">
+                  <div className="about__skill-card-icon-wrap">
+                    <span className="about__skill-card-icon">{category.icon}</span>
+                    <h4 className="about__skill-card-title">{category.title}</h4>
+                  </div>
+                </div>
+
+                <div className="about__skill-bars">
+                  {category.skills.map((skill) => (
+                    <div className="about__skill-bar-item" key={skill.name}>
+                      <div className="about__skill-bar-info">
+                        <span className="about__skill-bar-name">{skill.name}</span>
+                        <span className="about__skill-bar-percent">{skill.level}%</span>
+                      </div>
+                      <div className="about__skill-track">
+                        <motion.div
+                          className="about__skill-progress"
+                          initial={{ width: 0 }}
+                          whileInView={{ width: `${skill.level}%` }}
+                          viewport={{ once: true }}
+                          transition={{
+                            duration: 1,
+                            ease: [0.22, 1, 0.36, 1],
+                            delay: 0.2,
+                          }}
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   )

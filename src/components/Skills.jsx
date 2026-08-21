@@ -29,6 +29,8 @@ import {
   SiFirebase,
   SiFramer,
   SiVscodium,
+  SiShopify,
+  SiGraphql,
 } from 'react-icons/si'
 import {
   MdDesignServices,
@@ -40,10 +42,12 @@ import {
 import './Skills.css'
 
 const SKILLS = [
+  { name: 'Shopify', icon: <SiShopify />, color: '#95BF47' },
   { name: 'HTML5', icon: <FaHtml5 />, color: '#E34F26' },
   { name: 'CSS3', icon: <FaCss3Alt />, color: '#1572B6' },
   { name: 'JavaScript', icon: <SiJavascript />, color: '#F7DF1E' },
   { name: 'React.js', icon: <FaReact />, color: '#61DAFB' },
+  { name: 'GraphQL', icon: <SiGraphql />, color: '#E535AB' },
   { name: 'Responsive Design', icon: <FaMobileAlt />, color: '#9BA3AF' },
   { name: 'Front-End', icon: <FaCode />, color: '#22D3EE' },
   { name: 'UI/UX', icon: <MdDesignServices />, color: '#F472B6' },

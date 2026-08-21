@@ -20,6 +20,7 @@ import {
   FaTasks,
   FaProjectDiagram,
   FaCode,
+  FaShopify,
 } from 'react-icons/fa'
 import {
   SiJavascript,
@@ -38,8 +39,12 @@ import {
   SiGithubactions,
   SiOpenai,
   SiClaude,
+  SiShopify,
+  SiGraphql,
 } from 'react-icons/si'
 import { MdApi } from 'react-icons/md'
+import { BsGridFill } from 'react-icons/bs'
+import { FiTerminal } from 'react-icons/fi'
 import Footer from '../components/Footer.jsx'
 import './SkillsPage.css'
 
@@ -84,12 +89,34 @@ const CATEGORIES = [
     ],
   },
   {
+    title: 'Shopify Development',
+    desc: 'Building and customizing Shopify stores at Huemind — themes, Liquid templating, OS 2.0 architecture, and Admin API integrations.',
+    skills: [
+      { icon: <SiShopify />, name: 'Shopify', color: '#95BF47' },
+      { icon: <FaCode />, name: 'Liquid', color: '#22C55E' },
+      { icon: <BsGridFill />, name: 'OS 2.0', color: '#A3E635' },
+      { icon: <MdApi />, name: 'Admin API', color: '#38BDF8' },
+      { icon: <FiTerminal />, name: 'Shopify CLI', color: '#84CC16' },
+    ],
+    chips: [
+      'Liquid',
+      'Online Store 2.0',
+      'Shopify CLI',
+      'Admin API',
+      'GraphQL',
+      'Sections',
+      'Snippets',
+      'Metafields',
+    ],
+  },
+  {
     title: 'API & Integration',
     desc: 'RESTful contracts, JWT-secured endpoints, and third-party integrations.',
     skills: [
       { icon: <MdApi />, name: 'REST API', color: '#34D399' },
       { icon: <SiJsonwebtokens />, name: 'JWT Auth', color: '#D63AFF' },
       { icon: <SiAxios />, name: 'Axios', color: '#5A29E4' },
+      { icon: <SiGraphql />, name: 'GraphQL', color: '#E535AB' },
     ],
   },
   {
@@ -278,9 +305,12 @@ const SkillsPage = () => {
                 <h3 className="skill-card__title">{cat.title}</h3>
                 <p className="skill-card__desc">{cat.desc}</p>
                 <div className="skill-card__chips">
-                  {cat.skills.map((s) => (
-                    <span className="skill-card__chip" key={`${cat.title}-${s.name}`}>
-                      {s.name}
+                  {(cat.chips || cat.skills.map((s) => s.name)).map((chipName) => (
+                    <span
+                      className="skill-card__chip"
+                      key={`${cat.title}-${chipName}`}
+                    >
+                      {chipName}
                     </span>
                   ))}
                 </div>

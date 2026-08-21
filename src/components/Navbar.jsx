@@ -8,7 +8,7 @@ const NAV_ITEMS = [
   { to: '/skills', label: 'Skills', icon: '/nav-icons/skills.jpg' },
   { to: '/projects', label: 'Projects', icon: '/nav-icons/projects.jpg' },
   { to: '/certificates', label: 'Certificates', icon: '/nav-icons/certificates.jpg' },
-  { to: '/internship', label: 'Internship', icon: '/nav-icons/internship.jpg' },
+  { to: '/experience', label: 'Experience', icon: '/nav-icons/internship.jpg' },
   { to: '/resume', label: 'Resume', icon: '/nav-icons/resume.jpg' },
   { to: '/github', label: 'GitHub', icon: '/nav-icons/github.jpg' },
   { to: '/contact', label: 'Contact', icon: '/nav-icons/contact.jpg' },
