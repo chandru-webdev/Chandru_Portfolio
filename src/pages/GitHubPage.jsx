@@ -15,36 +15,38 @@ import {
 import Footer from '../components/Footer.jsx'
 import './GitHubPage.css'
 
+import { LuFactory, LuGem } from 'react-icons/lu'
+
 const GITHUB_PROFILE = 'https://github.com/chandru-webdev'
 const ACCENT = '#a3e635'
 
 const STATS = [
   { value: '9+', label: 'Repositories', sub: 'Public projects' },
-  { value: '3', label: 'Projects', sub: 'Full stack apps' },
+  { value: '4+', label: 'Projects', sub: 'Full stack apps' },
   { value: '15+', label: 'Tech stacks', sub: 'Languages used' },
   { value: '2025', label: 'Active since', sub: 'Building in public' },
 ]
 
 const REPOS = [
   {
-    name: 'yumzo-food-ordering',
-    desc: 'Full-stack food ordering app with Spring Boot backend, JWT auth, Razorpay payments, and React + TypeScript frontend.',
-    tags: ['Java', 'TypeScript'],
-    href: 'https://github.com/chandru-webdev/Yemzo',
-    image: '/projects/yumzo.png',
-    icon: <FaUtensils />,
+    name: 'kattadam-marketplace',
+    desc: 'Construction services marketplace built with Next.js 14 + Supabase for Tamil Nadu clients, connecting contractors and suppliers.',
+    tags: ['Next.js', 'Supabase', 'TypeScript'],
+    href: 'https://kattadam.in/',
+    image: '/projects/kattadam.png',
+    icon: <LuFactory />,
     layout: 'wide',
-    badge: null,
+    badge: 'Live',
   },
   {
-    name: 'aml-detection-system',
-    desc: 'Anti-Money Laundering detection platform with TensorFlow ML model, Flask backend, and MySQL for transaction monitoring.',
-    tags: ['Flask', 'HTML'],
-    href: 'https://github.com/chandru-webdev',
-    image: '/projects/aml.jpg',
-    icon: <FaUserShield />,
+    name: 'zayra-jewelry-erp',
+    desc: 'Full-stack jewelry ERP and billing software for 92.5 sterling silver brands with NestJS, Prisma, PostgreSQL, React, and Shopify.',
+    tags: ['NestJS', 'Prisma', 'React'],
+    href: 'https://zayra-jewellry-billing-software.vercel.app/',
+    image: '/projects/zayra.png',
+    icon: <LuGem />,
     layout: 'tall',
-    badge: null,
+    badge: 'Live',
   },
   {
     name: 'velzo-ecommerce',
@@ -57,14 +59,14 @@ const REPOS = [
     badge: 'Live',
   },
   {
-    name: 'bus-booking-system',
-    desc: 'Internship project — online bus booking system with React, REST APIs, MySQL, and JWT authentication for seat reservation flow.',
-    tags: ['React', 'MySQL'],
-    href: 'https://github.com/chandru-webdev',
-    image: '/projects/bus.jpg',
-    icon: <FaBus />,
+    name: 'crypto-trading-service',
+    desc: 'Backend service for a crypto trading workflow — built in Java with Spring Boot REST APIs and layered architecture.',
+    tags: ['Java', 'Spring Boot'],
+    href: 'https://github.com/chandru-webdev/Crypto-Trading',
+    image: '/projects/crypto.png',
+    icon: <FaShoppingCart />,
     layout: 'wide',
-    badge: 'Internship',
+    badge: null,
   },
 ]
 

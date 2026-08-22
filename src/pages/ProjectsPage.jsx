@@ -4,30 +4,23 @@ import {
   FiArrowUpRight,
   FiGithub,
   FiExternalLink,
+  FiCode,
 } from 'react-icons/fi'
 import {
   FaJava,
-  FaPython,
   FaReact,
   FaHtml5,
   FaCss3Alt,
   FaUtensils,
-  FaUserShield,
-  FaBus,
   FaCoins,
   FaShoppingCart,
 } from 'react-icons/fa'
 import {
   SiSpringboot,
-  SiMysql,
   SiTypescript,
   SiJavascript,
   SiVite,
-  SiFlask,
-  SiTensorflow,
   SiFirebase,
-  SiRazorpay,
-  SiJsonwebtokens,
   SiVercel,
 } from 'react-icons/si'
 import Footer from '../components/Footer.jsx'
@@ -42,48 +35,58 @@ const STATUS_STYLES = {
 
 const PROJECTS = [
   {
-    id: 'yumzo',
-    title: 'Yumzo — Food Ordering App',
-    span: 'large',
-    accent: '#f59e0b',
+    id: 'kattadam',
+    title: 'Kattadam — Construction Marketplace',
+    span: 'featured',
+    isFeatured: true,
+    accent: '#10b981',
+    image: '/projects/kattadam.png',
     summary:
-      'A full-stack food ordering platform with secure Spring Boot backend, JWT auth, BCrypt password hashing, and a modern React + TypeScript frontend. Integrated Razorpay payments and TheMealDB for dynamic menus.',
+      'A construction services marketplace built for Tamil Nadu clients — connecting contractors, material suppliers, and homeowners. Features real-time listings, authentication, and a clean mobile-first UI built with Next.js 14 and Supabase.',
     status: 'LIVE',
-    image: '/projects/yumzo.png',
-    icons: [
-      { icon: <SiSpringboot />, color: '#6DB33F' },
-      { icon: <FaJava />, color: '#E76F00' },
-      { icon: <SiMysql />, color: '#4479A1' },
-      { icon: <SiRazorpay />, color: '#3395FF' },
-      { icon: <FaUtensils />, color: '#f59e0b' },
+    chips: [
+      'Next.js 14',
+      'Supabase',
+      'TypeScript',
+      'Tailwind CSS',
+      'PostgreSQL',
+      'Auth',
+      'Vercel',
     ],
-    chips: ['Spring Boot', 'Java', 'JWT', 'BCrypt', 'React', 'TypeScript', 'Vite', 'MySQL', 'Razorpay', 'TheMealDB', 'Postman'],
-    github: 'https://github.com/chandru-webdev/Yemzo',
-    live: null,
+    github: 'https://github.com/chandru-webdev',
+    live: 'https://kattadam.in/',
+    liveLabel: 'kattadam.in',
   },
   {
-    id: 'aml',
-    title: 'AML Detection System',
-    span: 'medium',
-    accent: '#3b82f6',
+    id: 'zayra',
+    title: 'Zayra — Jewelry Billing Software',
+    span: 'featured',
+    isFeatured: true,
+    accent: '#0284c7',
+    image: '/projects/zayra.png',
     summary:
-      'Anti-Money Laundering detection platform built with Flask + MySQL. Integrated a TensorFlow ML model for risk and anomaly scoring with secure role-based access and automated review workflows for flagged transactions.',
-    status: 'COMPLETED',
-    image: '/projects/aml.jpg',
-    icons: [
-      { icon: <FaPython />, color: '#3776AB' },
-      { icon: <SiFlask />, color: '#ffffff' },
-      { icon: <SiTensorflow />, color: '#FF6F00' },
-      { icon: <FaUserShield />, color: '#3b82f6' },
+      'Full-stack jewelry ERP and billing platform for a 92.5 sterling silver brand. Built with React + TypeScript frontend, NestJS + Prisma + PostgreSQL backend, BullMQ + Redis for silver rate sync, JWT/RBAC auth, and Shopify + Razorpay integrations for storefront and payments.',
+    status: 'LIVE',
+    chips: [
+      'NestJS',
+      'Prisma',
+      'PostgreSQL',
+      'React',
+      'TypeScript',
+      'Shopify',
+      'BullMQ',
+      'Redis',
+      'JWT/RBAC',
+      'Razorpay',
     ],
-    chips: ['Python', 'Flask', 'TensorFlow', 'MySQL', 'REST API', 'HTML', 'CSS', 'JavaScript'],
     github: 'https://github.com/chandru-webdev',
-    live: null,
+    live: 'https://zayra-jewellry-billing-software.vercel.app/',
+    liveLabel: 'Live demo',
   },
   {
     id: 'velzo',
     title: 'Velzo — E-Commerce',
-    span: 'medium',
+    span: 'small',
     accent: '#a855f7',
     summary:
       'Responsive fashion store deployed on Vercel. Features cart, persistent state with localStorage, JSON-driven catalog, and a mobile-first UI.',
@@ -97,25 +100,6 @@ const PROJECTS = [
     ],
     chips: ['HTML5', 'CSS3', 'JavaScript', 'Firebase', 'Vercel'],
     github: 'https://github.com/chandru-webdev/velzo-',
-    live: null,
-  },
-  {
-    id: 'bus',
-    title: 'Bus Booking System',
-    span: 'medium',
-    accent: '#10b981',
-    summary:
-      'Internship project — seat selection to booking to payment, with JWT auth, seamless seat availability, and Agile team delivery.',
-    status: 'INTERNSHIP',
-    image: '/projects/bus.jpg',
-    icons: [
-      { icon: <FaBus />, color: '#10b981' },
-      { icon: <FaReact />, color: '#61DAFB' },
-      { icon: <SiMysql />, color: '#4479A1' },
-      { icon: <SiJsonwebtokens />, color: '#D63AFF' },
-    ],
-    chips: ['React.js', 'REST API', 'MySQL', 'JWT', 'Git'],
-    github: 'https://github.com/chandru-webdev',
     live: null,
   },
   {
@@ -228,7 +212,7 @@ const ProjectsPage = () => {
               }}
             >
               Projects I&apos;ve{' '}
-              <span className="projects-page__title-accent">from scratch.</span>
+              <span className="projects-page__title-accent">crafted with precision.</span>
             </motion.h1>
 
             <motion.a
@@ -263,9 +247,13 @@ const ProjectsPage = () => {
                 custom={idx}
                 style={{ '--accent': p.accent }}
               >
-                {/* Preview image or icon strip */}
+                {/* Image Preview (Featured or Standard) */}
                 {p.image ? (
-                  <div className="project-card__preview">
+                  <div
+                    className={`project-card__preview ${
+                      p.isFeatured ? 'project-card__preview--featured' : ''
+                    }`}
+                  >
                     <img src={p.image} alt={p.title} loading="lazy" />
                     <div className="project-card__actions project-card__actions--overlay">
                       {p.github && (
@@ -293,17 +281,19 @@ const ProjectsPage = () => {
                     </div>
                   </div>
                 ) : (
+                  /* Icon Fallback */
                   <div className="project-card__top">
                     <div className="project-card__icons">
-                      {p.icons.map((ic, i) => (
-                        <span
-                          key={i}
-                          className="project-card__icon"
-                          style={{ color: ic.color }}
-                        >
-                          {ic.icon}
-                        </span>
-                      ))}
+                      {p.icons &&
+                        p.icons.map((ic, i) => (
+                          <span
+                            key={i}
+                            className="project-card__icon"
+                            style={{ color: ic.color }}
+                          >
+                            {ic.icon}
+                          </span>
+                        ))}
                     </div>
                     <div className="project-card__actions">
                       {p.github && (
@@ -332,7 +322,7 @@ const ProjectsPage = () => {
                   </div>
                 )}
 
-                {/* Body */}
+                {/* Card Body */}
                 <div className="project-card__body">
                   <div className="project-card__head">
                     <h3 className="project-card__title">{p.title}</h3>
@@ -346,7 +336,12 @@ const ProjectsPage = () => {
                   <p className="project-card__desc">{p.summary}</p>
                   <div className="project-card__chips">
                     {p.chips.map((c) => (
-                      <span className="project-card__chip" key={c}>
+                      <span
+                        className={`project-card__chip ${
+                          c === 'Shopify' ? 'project-card__chip--highlight' : ''
+                        }`}
+                        key={c}
+                      >
                         {c}
                       </span>
                     ))}
@@ -360,7 +355,7 @@ const ProjectsPage = () => {
                           rel="noopener noreferrer"
                           className="project-card__link project-card__link--code"
                         >
-                          <FiGithub aria-hidden="true" />
+                          <FiCode aria-hidden="true" />
                           Code
                         </a>
                       )}
@@ -372,7 +367,7 @@ const ProjectsPage = () => {
                           className="project-card__link project-card__link--live"
                         >
                           <FiExternalLink aria-hidden="true" />
-                          Live
+                          {p.liveLabel || 'Live demo'}
                         </a>
                       )}
                     </div>

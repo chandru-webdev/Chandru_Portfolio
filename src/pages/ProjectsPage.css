@@ -13,7 +13,7 @@
   overflow: hidden;
 }
 
-/* Dotted "graph paper" canvas — visual cue that all projects are connected */
+/* Dotted "graph paper" canvas */
 .projects-page::before {
   content: '';
   position: absolute;
@@ -134,14 +134,14 @@
    ============================================================ */
 
 .projects-grid {
-  --gap: 18px;
+  --gap: 22px;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   gap: var(--gap);
   position: relative;
 }
 
-/* Dashed connector overlay — gives the "all connected" feel */
+/* Dashed connector overlay */
 .projects-grid::before {
   content: '';
   position: absolute;
@@ -177,20 +177,23 @@
   );
 }
 
-/* Card spans — mimics the asymmetric layout in your reference */
-.project-card--large   { grid-column: span 6; }
-.project-card--medium  { grid-column: span 3; }
-.project-card--small   { grid-column: span 2; }
-.project-card--cta     { grid-column: span 2; }
+/* Card spans */
+.project-card--featured { grid-column: span 6; }
+.project-card--large    { grid-column: span 6; }
+.project-card--medium   { grid-column: span 3; }
+.project-card--small    { grid-column: span 2; }
+.project-card--cta      { grid-column: span 2; }
 
 @media (max-width: 1024px) {
-  .project-card--large   { grid-column: span 6; }
-  .project-card--medium  { grid-column: span 6; }
-  .project-card--small   { grid-column: span 3; }
-  .project-card--cta     { grid-column: span 3; }
+  .project-card--featured { grid-column: span 6; }
+  .project-card--large    { grid-column: span 6; }
+  .project-card--medium   { grid-column: span 6; }
+  .project-card--small    { grid-column: span 3; }
+  .project-card--cta      { grid-column: span 3; }
 }
 
 @media (max-width: 640px) {
+  .project-card--featured,
   .project-card--large,
   .project-card--medium,
   .project-card--small,
@@ -200,7 +203,7 @@
 }
 
 /* ============================================================
-   Card
+   Card Base
    ============================================================ */
 
 .project-card {
@@ -208,13 +211,13 @@
   z-index: 1;
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 20px;
   padding: 20px;
-  background: rgba(12, 12, 12, 0.85);
+  background: rgba(12, 14, 18, 0.88);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 22px;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  border-radius: 24px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   overflow: hidden;
   transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
 }
@@ -224,11 +227,11 @@
   position: absolute;
   inset: 0;
   background: radial-gradient(
-    600px 240px at 20% 0%,
-    color-mix(in srgb, var(--accent, #ffffff) 16%, transparent),
+    700px 300px at 50% 0%,
+    color-mix(in srgb, var(--accent, #ffffff) 14%, transparent),
     transparent 70%
   );
-  opacity: 0;
+  opacity: 0.6;
   transition: opacity 0.4s ease;
   pointer-events: none;
 }
@@ -237,19 +240,68 @@
   transform: translateY(-4px);
   border-color: color-mix(in srgb, var(--accent, #ffffff) 45%, transparent);
   box-shadow:
-    0 24px 50px -20px rgba(0, 0, 0, 0.65),
-    0 0 50px -10px color-mix(in srgb, var(--accent, #ffffff) 30%, transparent);
+    0 24px 50px -20px rgba(0, 0, 0, 0.75),
+    0 0 50px -10px color-mix(in srgb, var(--accent, #ffffff) 25%, transparent);
 }
 
 .project-card:hover::before {
   opacity: 1;
 }
 
-/* ----- Preview image ----- */
+/* ============================================================
+   Featured Project Card (Kattadam, Zayra)
+   ============================================================ */
+
+.project-card--featured {
+  padding: 20px;
+  gap: 22px;
+  border-color: rgba(255, 255, 255, 0.1);
+  background: rgba(10, 12, 16, 0.94);
+}
+
+.project-card__preview--featured {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 8.5;
+  min-height: 320px;
+  max-height: 480px;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(0, 0, 0, 0.6);
+  box-shadow:
+    0 20px 45px -12px rgba(0, 0, 0, 0.8),
+    0 0 40px -15px color-mix(in srgb, var(--accent, #10b981) 30%, transparent);
+}
+
+@media (max-width: 768px) {
+  .project-card__preview--featured {
+    aspect-ratio: 16 / 9.5;
+    min-height: 220px;
+  }
+}
+
+.project-card__preview--featured img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-card:hover .project-card__preview--featured img {
+  transform: scale(1.025);
+}
+
+/* ============================================================
+   Standard Preview Image (Small cards)
+   ============================================================ */
+
 .project-card__preview {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 7;
+  aspect-ratio: 16 / 9;
   border-radius: 14px;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -271,16 +323,12 @@
 
 .project-card__actions--overlay {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 12px;
+  right: 12px;
   z-index: 2;
 }
 
-.project-card--large .project-card__preview {
-  aspect-ratio: 16 / 6.5;
-}
-
-/* ----- Top row (icon strip fallback) ----- */
+/* Icon Fallback Top Row */
 .project-card__top {
   position: relative;
   display: flex;
@@ -331,36 +379,47 @@
 }
 
 .project-card__action {
-  width: 32px;
-  height: 32px;
+  width: 34px;
+  height: 34px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 8px;
-  background: rgba(0, 0, 0, 0.45);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   color: #d8d8d8;
   font-size: 15px;
   text-decoration: none;
-  transition: color 0.25s ease, background 0.25s ease, transform 0.25s ease;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: color 0.25s ease, background 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
 }
 
 .project-card__action:hover {
   color: #ffffff;
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.4);
   transform: translateY(-1px);
 }
 
-/* ----- Body ----- */
+/* ============================================================
+   Body & Content
+   ============================================================ */
+
 .project-card__body {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
+  padding: 4px 6px;
+}
+
+.project-card--featured .project-card__body {
+  padding: 6px 10px 10px;
 }
 
 .project-card__head {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   gap: 12px;
 }
@@ -372,14 +431,18 @@
   font-weight: 700;
   letter-spacing: -0.015em;
   color: #ffffff;
-  line-height: 1.15;
+  line-height: 1.2;
+}
+
+.project-card--featured .project-card__title {
+  font-size: clamp(19px, 1.7vw, 25px);
 }
 
 .project-card__desc {
   margin: 0;
-  font-size: 13px;
-  line-height: 1.6;
-  color: #9a9a9a;
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: #9ca3af;
 }
 
 .project-card__chips {
@@ -389,38 +452,46 @@
 }
 
 .project-card__chip {
-  font-size: 11px;
+  font-size: 11.5px;
   font-weight: 500;
-  padding: 4px 10px;
+  padding: 4px 11px;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 999px;
-  color: #c8c8c8;
+  color: #cbd5e1;
   white-space: nowrap;
+  transition: border-color 0.25s ease, background 0.25s ease;
+}
+
+.project-card__chip--highlight {
+  border-color: rgba(34, 197, 94, 0.45);
+  color: #86efac;
+  background: rgba(34, 197, 94, 0.08);
 }
 
 .project-card__links {
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 4px;
-  padding-top: 12px;
+  gap: 10px;
+  margin-top: 6px;
+  padding-top: 14px;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .project-card__link {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 8px 14px;
-  font-size: 12px;
+  gap: 7px;
+  padding: 8px 16px;
+  font-size: 12.5px;
   font-weight: 600;
   text-decoration: none;
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.14);
   background: rgba(255, 255, 255, 0.04);
   color: #d8d8d8;
-  transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+  transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
 }
 
 .project-card__link:hover {
@@ -428,6 +499,12 @@
   transform: translateY(-1px);
   background: rgba(255, 255, 255, 0.08);
   border-color: rgba(255, 255, 255, 0.28);
+}
+
+.project-card__link--code {
+  color: #e2e8f0;
+  border-color: rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.04);
 }
 
 .project-card__link--live {
@@ -439,14 +516,17 @@
 .project-card__link--live:hover {
   color: #86efac;
   border-color: rgba(74, 222, 128, 0.55);
-  background: rgba(74, 222, 128, 0.14);
+  background: rgba(74, 222, 128, 0.16);
 }
 
 .project-card__link svg {
   font-size: 14px;
 }
 
-/* ----- Status badge ----- */
+/* ============================================================
+   Status Badge
+   ============================================================ */
+
 .badge {
   flex-shrink: 0;
   display: inline-flex;
@@ -503,11 +583,11 @@
    ============================================================ */
 
 .project-card--cta {
-  background: linear-gradient(180deg, rgba(20, 20, 20, 0.9) 0%, rgba(8, 8, 8, 0.95) 100%);
+  background: linear-gradient(180deg, rgba(20, 22, 28, 0.9) 0%, rgba(8, 10, 14, 0.95) 100%);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 14px;
+  gap: 16px;
   border: 1px dashed rgba(255, 255, 255, 0.18);
 }
 
@@ -519,11 +599,11 @@
 .project-card__cta-title {
   margin: 0;
   font-family: 'Space Grotesk', 'Inter', sans-serif;
-  font-size: clamp(20px, 2vw, 28px);
+  font-size: clamp(20px, 2vw, 26px);
   font-weight: 700;
   letter-spacing: -0.02em;
   color: #ffffff;
-  line-height: 1.15;
+  line-height: 1.18;
 }
 
 .project-card__cta-desc {
@@ -562,7 +642,7 @@
 }
 
 /* ============================================================
-   Responsive header
+   Responsive
    ============================================================ */
 
 @media (max-width: 700px) {

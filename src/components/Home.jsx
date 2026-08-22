@@ -9,6 +9,7 @@ const ROLES = [
   'Front End Developer',
   'Freelancer',
   'Backend Developer',
+  'Shopify Developer',
 ]
 
 const fadeUp = {
@@ -92,11 +93,11 @@ const Home = () => {
         <div className="home__marquee-track">
           <span className="home__marquee-text">
             Full-Stack Developer &nbsp;&amp;&nbsp; Software Developer
-            &nbsp;&amp;&nbsp; Freelancer &nbsp;&amp;&nbsp;
+            &nbsp;&amp;&nbsp; Freelancer &nbsp;&amp;&nbsp; Shopify Developer &nbsp;&amp;&nbsp;
           </span>
           <span className="home__marquee-text" aria-hidden="true">
             Full-Stack Developer &nbsp;&amp;&nbsp; Software Developer
-            &nbsp;&amp;&nbsp; Freelancer &nbsp;&amp;&nbsp;
+            &nbsp;&amp;&nbsp; Freelancer &nbsp;&amp;&nbsp; Shopify Developer &nbsp;&amp;&nbsp;
           </span>
         </div>
       </motion.div>
