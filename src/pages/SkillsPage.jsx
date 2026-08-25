@@ -32,6 +32,7 @@ import {
   SiJsonwebtokens,
   SiMysql,
   SiMongodb,
+  SiPostgresql,
   SiPostman,
   SiVercel,
   SiVscodium,
@@ -121,8 +122,9 @@ const CATEGORIES = [
   },
   {
     title: 'Database Management',
-    desc: 'Designing normalized schemas in MySQL and document stores in MongoDB.',
+    desc: 'Designing relational databases with PostgreSQL and MySQL, and document stores in MongoDB.',
     skills: [
+      { icon: <SiPostgresql />, name: 'PostgreSQL', color: '#4169E1' },
       { icon: <SiMysql />, name: 'MySQL', color: '#4479A1' },
       { icon: <SiMongodb />, name: 'MongoDB', color: '#47A248' },
     ],

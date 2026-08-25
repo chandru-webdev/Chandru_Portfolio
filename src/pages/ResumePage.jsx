@@ -146,7 +146,7 @@ const ResumePage = () => {
               </div>
               <div className="resume-preview__frame">
                 <iframe
-                  src={`${RESUME_PDF}?v=20260822#toolbar=0&navpanes=0`}
+                  src={`${RESUME_PDF}?v=20260825_v2#toolbar=0&navpanes=0`}
                   title="Resume preview"
                 />
               </div>

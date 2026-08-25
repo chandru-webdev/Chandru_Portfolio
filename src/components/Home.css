@@ -88,15 +88,18 @@
   height: 100vh;
   z-index: 3;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
+  pointer-events: none;
 }
 
 .profile-placeholder {
-  width: 100vw;
   height: 100vh;
-  object-fit: cover;
-  object-position: center;
+  max-height: 100vh;
+  max-width: 100%;
+  width: auto;
+  object-fit: contain;
+  object-position: center bottom;
   filter:
     grayscale(1)
     contrast(1.08)
@@ -375,7 +378,13 @@
   }
 
   .home__portrait {
-    height: 60vh;
+    height: 100vh;
+  }
+
+  .profile-placeholder {
+    height: 100vh;
+    max-height: 100vh;
+    max-width: 100%;
   }
 
   .home__marquee {
@@ -403,8 +412,14 @@
   }
 
   .home__portrait {
-    height: 55vh;
-    margin-top: 80px;
+    height: 100vh;
+    margin-top: 0;
+  }
+
+  .profile-placeholder {
+    height: 100vh;
+    max-height: 100vh;
+    max-width: 100%;
   }
 
   .home__tag {

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FiArrowDownRight } from 'react-icons/fi'
+import HomeProjectCarousel from './HomeProjectCarousel.jsx'
 import './Home.css'
 
 const ROLES = [
@@ -33,6 +34,9 @@ const Home = () => {
 
   return (
     <section className="home">
+      {/* Left side scrolling project carousel */}
+      <HomeProjectCarousel />
+
       {/* Center portrait */}
       <motion.div
         className="home__portrait"
@@ -41,8 +45,8 @@ const Home = () => {
         transition={{ duration: 1.1, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
       >
         <img
-          src="/profile.png"
-          alt="Chandruuuu"
+          src="/home-portrait.png"
+          alt="Chandru"
           className="profile-placeholder"
         />
         <div className="home__portrait-glow" />
