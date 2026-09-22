@@ -104,7 +104,7 @@ const EXPERIENCES = [
     role: 'Full Stack Developer',
     status: 'Completed',
     period: 'May 2026 – Jul 2026',
-    location: 'Chennai, India',
+    location: 'Bangalore, India',
     type: 'Freelance / Client Project',
     duration: '3 months',
     index: '02',
@@ -146,7 +146,7 @@ const EXPERIENCES = [
       },
     ],
     stats: [
-      { value: '3mo', label: 'Duration', sub: 'May 2026 – Jul 2026 · Chennai' },
+      { value: '3mo', label: 'Duration', sub: 'May 2026 – Jul 2026 · Bangalore' },
       { value: '7+', label: 'Tech Tools', sub: 'Next.js · Supabase · React · Git' },
     ],
     takeaways: [

@@ -203,7 +203,7 @@
   overflow: hidden;
   pointer-events: none;
   user-select: none;
-  z-index: 6;
+  z-index: 2;
   mask-image: linear-gradient(
     90deg,
     transparent 0%,
@@ -372,23 +372,34 @@
   }
 
   .home__tag {
-    top: auto;
-    bottom: 22%;
+    top: clamp(80px, 12vh, 120px);
+    bottom: auto;
     right: 24px;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    padding: 6px 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   .home__portrait {
-    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    padding-top: clamp(20px, 6vh, 50px);
+    padding-bottom: clamp(100px, 15vh, 160px);
   }
 
   .profile-placeholder {
-    height: 100vh;
-    max-height: 100vh;
-    max-width: 100%;
+    height: auto;
+    max-height: 68vh;
+    max-width: 90vw;
+    width: auto;
+    object-fit: contain;
   }
 
   .home__marquee {
-    bottom: 110px;
+    bottom: 100px;
   }
 
   .home__marquee-text {
@@ -403,41 +414,65 @@
 
   .home__brand {
     position: absolute;
+    top: 18px;
+    left: 18px;
   }
 
   .home__intro {
     position: absolute;
-    max-width: 60vw;
+    top: 18px;
+    right: 18px;
+    max-width: 55vw;
     font-size: 10px;
+    line-height: 1.45;
   }
 
   .home__portrait {
     height: 100vh;
-    margin-top: 0;
+    align-items: center;
+    justify-content: center;
+    padding-top: clamp(20px, 5vh, 40px);
+    padding-bottom: clamp(110px, 16vh, 150px);
   }
 
   .profile-placeholder {
-    height: 100vh;
-    max-height: 100vh;
-    max-width: 100%;
+    height: auto;
+    max-height: 58vh;
+    max-width: 92vw;
+    width: auto;
+    object-fit: contain;
   }
 
   .home__tag {
-    bottom: 22%;
+    top: clamp(72px, 10vh, 95px);
+    bottom: auto;
     right: 16px;
-    gap: 10px;
+    gap: 8px;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    padding: 6px 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
   }
 
-  .home__tag-text {
+  .home__tag-arrow {
+    width: 22px;
+    height: 22px;
     font-size: 13px;
   }
 
+  .home__tag-text {
+    font-size: 12.5px;
+  }
+
   .home__tag-rotator {
-    min-width: 180px;
+    min-width: 170px;
+    height: 1.3em;
   }
 
   .home__marquee {
-    bottom: 100px;
+    bottom: 92px;
   }
 
   .home__marquee-text {
@@ -461,6 +496,22 @@
 }
 
 @media (max-width: 420px) {
+  .home__portrait {
+    padding-bottom: 140px;
+  }
+
+  .profile-placeholder {
+    max-height: 54vh;
+  }
+
+  .home__tag {
+    top: 80px;
+  }
+
+  .home__tag-rotator {
+    min-width: 150px;
+  }
+
   .home__nav-btn {
     width: 34px;
     height: 34px;

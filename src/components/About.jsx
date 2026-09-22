@@ -199,14 +199,14 @@ const About = () => {
               <img src="/profile.png" alt="Chandru — Java Full Stack Developer" />
               <div className="about__portrait-tag">
                 <FiMapPin />
-                <span>Chennai, India</span>
+                <span>Bangalore, India</span>
               </div>
             </div>
 
             <div className="about__bio">
               <p>
                 I&apos;m a <strong>Java Full Stack Developer</strong> based in
-                Chennai. I build end-to-end web apps — from secure Spring Boot
+                Bangalore. I build end-to-end web apps — from secure Spring Boot
                 backends to clean React frontends.
               </p>
               <p>
