@@ -1,4 +1,4 @@
-# Chandru_Portfolio
+# Chandru_Portfolio https://chandruuuu.vercel.app/
 
 A cinematic, monochrome, Apple-inspired portfolio homepage built with **React + Vite**, **Framer Motion**, and **React Icons**.
 
