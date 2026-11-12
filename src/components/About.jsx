@@ -28,8 +28,8 @@ const SOCIALS = [
 ]
 
 const STATS = [
-  { value: '7+', label: 'FULL-STACK PROJECTS' },
-  { value: '2mo', label: 'SHOPIFY EXPERIENCE' },
+  { value: '10+', label: 'PROJECTS' },
+  { value: '10mo', label: 'FULL STACK · SHOPIFY DEV' },
   { value: '3', label: 'CERTIFICATIONS' },
   { value: '7.8', label: 'CGPA' },
 ]
@@ -58,8 +58,8 @@ const CURRENTLY_WORKING = [
     icon: <FiShoppingBag />,
     iconType: 'green',
     title: 'Huemind Digital Marketing',
-    subtitle: 'Shopify Website Developer · Liquid · OS 2.0 · Admin API',
-    badge: 'Jul 2026 – Now',
+    subtitle: 'Full Stack & Shopify Developer · Liquid · OS 2.0 · Admin API',
+    badge: 'Jan 2026 – Now',
     badgeType: 'green',
   },
   {
@@ -205,25 +205,33 @@ const About = () => {
 
             <div className="about__bio">
               <p>
-                I&apos;m a <strong>Java Full Stack Developer</strong> based in
-                Bangalore. I build end-to-end web apps — from secure Spring Boot
-                backends to clean React frontends.
+                <strong>Java Full Stack Developer</strong> skilled in React.js,
+                Next.js, TypeScript, Node.js, REST APIs, JWT authentication, and
+                MySQL/PostgreSQL.
               </p>
               <p>
-                Currently working as a{' '}
-                <strong>Shopify Developer at Huemind</strong> and building{' '}
-                <strong>Opal Line</strong>, a full-stack jewelry ERP platform
-                for a silver brand.
+                I work as a{' '}
+                <strong>Full Stack &amp; Shopify Developer at Huemind Digital
+                Marketing</strong>
+                , where I built <strong>Opalline</strong>, a jewelry billing ERP
+                for a 92.5 sterling silver business, and{' '}
+                <strong>The World Of Nerds</strong>, a live Shopify store.
               </p>
               <p>
-                I graduated with a{' '}
-                <strong>B.Sc. in Information Technology</strong> from Karpagam
-                Academy. I care about <strong>clean architecture</strong>,{' '}
-                <strong>meaningful code</strong>, and shipping things that work.
+                As a freelancer, I delivered <strong>Kattadam</strong>, a
+                construction marketplace, and <strong>MM Brandvista</strong>, a
+                digital marketing agency website.
               </p>
               <p>
-                When I&apos;m not coding, I&apos;m probably breaking something
-                just to understand how it works. That&apos;s kind of my thing.
+                I also work with Shopify Liquid, Admin API, GraphQL, payment
+                gateways, API testing with Postman, AWS EC2 deployment, and
+                Git/GitHub.
+              </p>
+              <p>
+                I hold a <strong>B.Sc. in Information Technology</strong> from
+                Karpagam Academy of Higher Education, Coimbatore (2022 to 2025,
+                CGPA 7.8/10). I focus on clean, scalable, production-ready
+                applications from development to deployment.
               </p>
 
               <div className="about__socials" aria-label="Social links">

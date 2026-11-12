@@ -22,7 +22,7 @@ const ACCENT = '#a3e635'
 
 const STATS = [
   { value: '9+', label: 'Repositories', sub: 'Public projects' },
-  { value: '4+', label: 'Projects', sub: 'Full stack apps' },
+  { value: '10+', label: 'Projects', sub: 'Full stack apps' },
   { value: '15+', label: 'Tech stacks', sub: 'Languages used' },
   { value: '2025', label: 'Active since', sub: 'Building in public' },
 ]
@@ -59,14 +59,24 @@ const REPOS = [
     badge: 'Live',
   },
   {
-    name: 'crypto-trading-service',
-    desc: 'Backend service for a crypto trading workflow — built in Java with Spring Boot REST APIs and layered architecture.',
-    tags: ['Java', 'Spring Boot'],
+    name: 'world-of-nerds-shopify',
+    desc: 'Live pan-India Shopify store for Huemind — Liquid OS 2.0 theme, mega-menu, bundles, SEO, and Meta Pixel.',
+    tags: ['Shopify', 'Liquid'],
+    href: 'https://theworldofnerds.com/',
+    image: '/projects/worldofnerds.jpg',
+    icon: <FaShoppingCart />,
+    layout: 'wide',
+    badge: 'Live',
+  },
+  {
+    name: 'atmr-bot',
+    desc: 'Automated algorithmic trading engine — Python, MT5, AI pattern recognition, n8n + Telegram, deployed on AWS EC2.',
+    tags: ['Python', 'AWS', 'MT5'],
     href: 'https://github.com/chandru-webdev/Crypto-Trading',
     image: '/projects/crypto.png',
     icon: <FaShoppingCart />,
     layout: 'wide',
-    badge: null,
+    badge: 'Live',
   },
 ]
 

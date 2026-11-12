@@ -136,7 +136,7 @@
 .projects-grid {
   --gap: 22px;
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(12, 1fr);
   gap: var(--gap);
   position: relative;
 }
@@ -177,28 +177,24 @@
   );
 }
 
-/* Card spans */
-.project-card--featured { grid-column: span 6; }
-.project-card--large    { grid-column: span 6; }
-.project-card--medium   { grid-column: span 3; }
-.project-card--small    { grid-column: span 2; }
-.project-card--cta      { grid-column: span 2; }
-
-@media (max-width: 1024px) {
-  .project-card--featured { grid-column: span 6; }
-  .project-card--large    { grid-column: span 6; }
-  .project-card--medium   { grid-column: span 6; }
-  .project-card--small    { grid-column: span 3; }
-  .project-card--cta      { grid-column: span 3; }
+/* Bento spans — desktop: ~60% / ~40% alternating per row */
+.project-card--wide {
+  grid-column: span 7;
 }
 
-@media (max-width: 640px) {
-  .project-card--featured,
-  .project-card--large,
-  .project-card--medium,
-  .project-card--small,
+.project-card--narrow {
+  grid-column: span 5;
+}
+
+@media (max-width: 1024px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-card--wide,
+  .project-card--narrow,
   .project-card--cta {
-    grid-column: span 6;
+    grid-column: 1 / -1;
   }
 }
 
@@ -263,7 +259,7 @@
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 8.5;
-  min-height: 320px;
+  min-height: 240px;
   max-height: 480px;
   border-radius: 18px;
   overflow: hidden;
@@ -274,10 +270,17 @@
     0 0 40px -15px color-mix(in srgb, var(--accent, #10b981) 30%, transparent);
 }
 
-@media (max-width: 768px) {
+.project-card--narrow .project-card__preview--featured {
+  aspect-ratio: 16 / 9;
+  min-height: 200px;
+  max-height: 320px;
+}
+
+@media (max-width: 1024px) {
   .project-card__preview--featured {
     aspect-ratio: 16 / 9.5;
     min-height: 220px;
+    max-height: 420px;
   }
 }
 
@@ -441,8 +444,9 @@
 .project-card__desc {
   margin: 0;
   font-size: 13.5px;
-  line-height: 1.65;
+  line-height: 1.55;
   color: #9ca3af;
+  white-space: pre-line;
 }
 
 .project-card__chips {

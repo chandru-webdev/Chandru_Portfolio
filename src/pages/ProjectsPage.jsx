@@ -5,9 +5,9 @@ import {
   FiGithub,
   FiExternalLink,
   FiCode,
+  FiCloud,
 } from 'react-icons/fi'
 import {
-  FaJava,
   FaReact,
   FaHtml5,
   FaCss3Alt,
@@ -15,8 +15,8 @@ import {
   FaCoins,
   FaShoppingCart,
 } from 'react-icons/fa'
+import { FaPython } from 'react-icons/fa6'
 import {
-  SiSpringboot,
   SiTypescript,
   SiJavascript,
   SiVite,
@@ -41,8 +41,10 @@ const PROJECTS = [
     isFeatured: true,
     accent: '#10b981',
     image: '/projects/kattadam.png',
-    summary:
-      'A construction services marketplace built for Tamil Nadu clients — connecting contractors, material suppliers, and homeowners. Features real-time listings, authentication, and a clean mobile-first UI built with Next.js 14 and Supabase.',
+    summary: `Construction marketplace for Tamil Nadu — contractors, suppliers & homeowners.
+Real-time listings, authentication, and a mobile-first UI.
+Next.js 14, Supabase, TypeScript, and PostgreSQL.
+Live on Vercel.`,
     status: 'LIVE',
     chips: [
       'Next.js 14',
@@ -64,8 +66,10 @@ const PROJECTS = [
     isFeatured: true,
     accent: '#0284c7',
     image: '/projects/zayra.png',
-    summary:
-      'Full-stack jewelry ERP and billing platform for a 92.5 sterling silver brand. Built with React + TypeScript frontend, NestJS + Prisma + PostgreSQL backend, BullMQ + Redis for silver rate sync, JWT/RBAC auth, and Shopify + Razorpay integrations for storefront and payments.',
+    summary: `Jewelry ERP & billing for a 92.5 sterling silver brand.
+React + TypeScript UI; NestJS, Prisma, PostgreSQL backend.
+Silver rate sync via BullMQ + Redis; JWT/RBAC auth.
+Shopify storefront + Razorpay payments.`,
     status: 'LIVE',
     chips: [
       'NestJS',
@@ -84,12 +88,38 @@ const PROJECTS = [
     liveLabel: 'Live demo',
   },
   {
+    id: 'worldofnerds',
+    title: 'The World Of Nerds — Huemind Shopify',
+    span: 'featured',
+    isFeatured: true,
+    accent: '#eab308',
+    image: '/projects/worldofnerds.jpg',
+    summary: `Live pan-India Shopify store — theworldofnerds.com (Huemind, 2026–Present).
+Liquid mega-menu, bundles, predictive search, cart drawer & wishlist.
+SEO, Meta Pixel, reviews & Instagram for visibility and trust.
+Day-to-day products, collections, and promotions — mobile & desktop.`,
+    status: 'LIVE',
+    chips: [
+      'Shopify',
+      'Liquid',
+      'Online Store 2.0',
+      'JavaScript',
+      'SEO',
+      'Meta Pixel',
+    ],
+    github: null,
+    live: 'https://theworldofnerds.com/',
+    liveLabel: 'theworldofnerds.com',
+  },
+  {
     id: 'velzo',
     title: 'Velzo — E-Commerce',
     span: 'small',
     accent: '#a855f7',
-    summary:
-      'Responsive fashion store deployed on Vercel. Features cart, persistent state with localStorage, JSON-driven catalog, and a mobile-first UI.',
+    summary: `Responsive fashion storefront on Vercel.
+Cart with localStorage persistence and JSON-driven catalog.
+HTML, CSS, JavaScript, and Firebase.
+Mobile-first shopping UI.`,
     status: 'LIVE',
     image: '/projects/velzo.png',
     icons: [
@@ -103,20 +133,30 @@ const PROJECTS = [
     live: null,
   },
   {
-    id: 'crypto',
-    title: 'Crypto Trading',
+    id: 'atmr-bot',
+    title: 'ATMR-Bot — Automated Algorithmic Trading System',
     span: 'small',
     accent: '#f97316',
-    summary:
-      'Backend service for a crypto trading workflow — built in Java with REST APIs and clean layered architecture.',
-    status: 'COMPLETED',
+    summary: `Python + MT5 engine with AI patterns — EMA, RSI, Bollinger Bands.
+ATR trailing stops & drawdown protection for volatile markets.
+n8n + Telegram for real-time alerts and remote commands.
+AWS EC2 production — 24/7 autonomous execution.`,
+    status: 'LIVE',
     image: '/projects/crypto.png',
     icons: [
+      { icon: <FaPython />, color: '#3776AB' },
       { icon: <FaCoins />, color: '#f97316' },
-      { icon: <FaJava />, color: '#E76F00' },
-      { icon: <SiSpringboot />, color: '#6DB33F' },
+      { icon: <FiCloud />, color: '#FF9900' },
     ],
-    chips: ['Java', 'Spring Boot', 'REST API'],
+    chips: [
+      'Python',
+      'MetaTrader 5',
+      'AWS (EC2)',
+      'n8n',
+      'Telegram API',
+      'PostgreSQL',
+      'AI Pattern Recognition',
+    ],
     github: 'https://github.com/chandru-webdev/Crypto-Trading',
     live: null,
   },
@@ -125,8 +165,10 @@ const PROJECTS = [
     title: 'Modern Agency Homepage',
     span: 'small',
     accent: '#22d3ee',
-    summary:
-      'A polished TypeScript + React agency homepage with smooth motion and modern layout patterns.',
+    summary: `TypeScript + React agency landing page.
+Smooth motion and modern section layout.
+Vite build and responsive CSS.
+Polished marketing-site patterns.`,
     status: 'COMPLETED',
     image: '/projects/agency.png',
     icons: [
@@ -143,8 +185,10 @@ const PROJECTS = [
     title: 'Tastybite',
     span: 'small',
     accent: '#ef4444',
-    summary:
-      'A food landing page with a clean, appetite-first hero and reusable section layout.',
+    summary: `Food brand landing page with a bold hero.
+Reusable sections and clean typography.
+HTML, CSS, and JavaScript.
+Appetite-first visual layout.`,
     status: 'COMPLETED',
     image: '/projects/tastybite.png',
     icons: [
@@ -161,8 +205,10 @@ const PROJECTS = [
     title: 'Employee Dashboard',
     span: 'small',
     accent: '#8b5cf6',
-    summary:
-      'A lightweight dashboard for managing employee data using vanilla JavaScript and clean UI components.',
+    summary: `Employee data dashboard in vanilla JavaScript.
+Table views and simple CRUD-style UI.
+HTML5, CSS3, and component-style layout.
+Lightweight, no framework dependency.`,
     status: 'COMPLETED',
     image: '/projects/dashboard.png',
     icons: [
@@ -183,6 +229,17 @@ const fadeUp = {
     y: 0,
     transition: { duration: 0.6, delay: i * 0.05, ease: [0.22, 1, 0.36, 1] },
   }),
+}
+
+/** Desktop bento: row 0 wide+narrow, row 1 narrow+wide, repeat (12-col grid). */
+const getBentoSpanClass = (index) => {
+  const row = Math.floor(index / 2)
+  const isFirstInRow = index % 2 === 0
+  const evenRow = row % 2 === 0
+  if (evenRow) {
+    return isFirstInRow ? 'project-card--wide' : 'project-card--narrow'
+  }
+  return isFirstInRow ? 'project-card--narrow' : 'project-card--wide'
 }
 
 const ProjectsPage = () => {
@@ -229,7 +286,7 @@ const ProjectsPage = () => {
               }}
             >
               <FiGithub />
-              <span>{PROJECTS.length}+ projects</span>
+              <span>10+ projects</span>
               <FiArrowUpRight className="projects-page__btn-arrow" />
             </motion.a>
           </div>
@@ -239,7 +296,9 @@ const ProjectsPage = () => {
             {PROJECTS.map((p, idx) => (
               <motion.article
                 key={p.id}
-                className={`project-card project-card--${p.span}`}
+                className={`project-card ${getBentoSpanClass(idx)}${
+                  p.isFeatured ? ' project-card--featured' : ''
+                }`}
                 variants={fadeUp}
                 initial="hidden"
                 whileInView="show"
@@ -378,7 +437,9 @@ const ProjectsPage = () => {
 
             {/* CTA card */}
             <motion.article
-              className="project-card project-card--cta"
+              className={`project-card project-card--cta ${getBentoSpanClass(
+                PROJECTS.length,
+              )}`}
               variants={fadeUp}
               initial="hidden"
               whileInView="show"

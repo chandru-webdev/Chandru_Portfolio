@@ -22,19 +22,19 @@
   isolation: isolate;
 }
 
-/* Dark vignette overlay so silver text stays readable on top of the photo */
+/* Subtle edge vignette (behind portrait & marquee) */
 .home::before {
   content: '';
   position: absolute;
   inset: 0;
   pointer-events: none;
   background:
-    radial-gradient(ellipse at center, transparent 35%, rgba(0, 0, 0, 0.75) 100%),
-    linear-gradient(180deg, rgba(0, 0, 0, 0.55) 0%, transparent 30%, transparent 70%, rgba(0, 0, 0, 0.65) 100%);
-  z-index: 4;
+    radial-gradient(ellipse at center, transparent 35%, rgba(0, 0, 0, 0.65) 100%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.45) 0%, transparent 30%, transparent 70%, rgba(0, 0, 0, 0.5) 100%);
+  z-index: 1;
 }
 
-/* Subtle film grain */
+/* Subtle film grain (behind foreground layers) */
 .home::after {
   content: '';
   position: absolute;
@@ -42,9 +42,9 @@
   pointer-events: none;
   background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
   background-size: 3px 3px;
-  opacity: 0.25;
+  opacity: 0.2;
   mix-blend-mode: screen;
-  z-index: 5;
+  z-index: 1;
 }
 
 /* ------------- Top brand ------------- */
@@ -86,7 +86,7 @@
   inset: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 3;
+  z-index: 2;
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -100,14 +100,11 @@
   width: auto;
   object-fit: contain;
   object-position: center bottom;
-  filter:
-    grayscale(1)
-    contrast(1.08)
-    brightness(1.05);
+  filter: contrast(1.05) brightness(1.02);
   position: relative;
   z-index: 1;
   user-select: none;
-  pointer-events: none;
+  pointer-events: auto;
 }
 
 .home__portrait-glow {
@@ -203,7 +200,7 @@
   overflow: hidden;
   pointer-events: none;
   user-select: none;
-  z-index: 2;
+  z-index: 5;
   mask-image: linear-gradient(
     90deg,
     transparent 0%,
@@ -242,7 +239,8 @@
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
-  mix-blend-mode: screen;
+  mix-blend-mode: soft-light;
+  opacity: 0.95;
 }
 
 @keyframes marquee-scroll {
@@ -366,40 +364,74 @@
 
 /* ------------- Responsive ------------- */
 @media (max-width: 900px) {
+  .home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100dvh;
+    min-height: 100dvh;
+    padding-top: var(--home-header-offset, 54px);
+    padding-bottom: calc(var(--home-nav-offset, 58px) + 8px);
+    box-sizing: border-box;
+    --home-header-offset: 54px;
+    --home-inset-x: 12px;
+    --home-portrait-zone: clamp(210px, 39dvh, 292px);
+    --home-stack-gap: 6px;
+    --home-nav-offset: calc(58px + env(safe-area-inset-bottom, 0px));
+  }
+
   .home__intro {
     max-width: 220px;
     font-size: 11px;
   }
 
   .home__tag {
-    top: clamp(80px, 12vh, 120px);
+    top: clamp(76px, 11vh, 108px);
     bottom: auto;
-    right: 24px;
+    right: 20px;
     background: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
-    padding: 6px 14px;
+    padding: 6px 12px;
     border-radius: 999px;
     border: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   .home__portrait {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    order: 1;
+    flex: 0 0 auto;
+    width: 100%;
+    height: var(--home-portrait-zone);
+    padding: 0;
+    display: flex;
     align-items: center;
     justify-content: center;
-    padding-top: clamp(20px, 6vh, 50px);
-    padding-bottom: clamp(100px, 15vh, 160px);
   }
 
   .profile-placeholder {
-    height: auto;
-    max-height: 68vh;
-    max-width: 90vw;
+    height: 100%;
     width: auto;
+    max-height: 100%;
+    max-width: min(86vw, 340px);
+    margin: 0 auto;
+    display: block;
     object-fit: contain;
+    object-position: center bottom;
   }
 
   .home__marquee {
-    bottom: 100px;
+    position: relative;
+    top: auto;
+    bottom: auto;
+    order: 3;
+    flex: 0 0 auto;
+    width: 100%;
+    margin-top: 10px;
   }
 
   .home__marquee-text {
@@ -409,50 +441,27 @@
 
 @media (max-width: 600px) {
   .home {
-    align-items: flex-start;
-  }
-
-  .home__brand {
-    position: absolute;
-    top: 18px;
-    left: 18px;
+    --home-header-offset: 50px;
+    --home-inset-x: 10px;
+    --home-portrait-zone: clamp(188px, 37dvh, 260px);
+    --home-stack-gap: 4px;
+    --home-nav-offset: calc(54px + env(safe-area-inset-bottom, 0px));
   }
 
   .home__intro {
-    position: absolute;
-    top: 18px;
-    right: 18px;
     max-width: 55vw;
     font-size: 10px;
     line-height: 1.45;
   }
 
-  .home__portrait {
-    height: 100vh;
-    align-items: center;
-    justify-content: center;
-    padding-top: clamp(20px, 5vh, 40px);
-    padding-bottom: clamp(110px, 16vh, 150px);
-  }
-
-  .profile-placeholder {
-    height: auto;
-    max-height: 58vh;
-    max-width: 92vw;
-    width: auto;
-    object-fit: contain;
-  }
-
   .home__tag {
-    top: clamp(72px, 10vh, 95px);
-    bottom: auto;
-    right: 16px;
+    top: clamp(68px, 10vh, 88px);
+    right: 14px;
     gap: 8px;
     background: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
-    padding: 6px 12px;
-    border-radius: 999px;
+    padding: 6px 10px;
     border: 1px solid rgba(255, 255, 255, 0.12);
   }
 
@@ -469,10 +478,6 @@
   .home__tag-rotator {
     min-width: 170px;
     height: 1.3em;
-  }
-
-  .home__marquee {
-    bottom: 92px;
   }
 
   .home__marquee-text {
@@ -496,16 +501,13 @@
 }
 
 @media (max-width: 420px) {
-  .home__portrait {
-    padding-bottom: 140px;
-  }
-
-  .profile-placeholder {
-    max-height: 54vh;
+  .home {
+    --home-header-offset: 171px;
+    --home-portrait-zone: clamp(172px, 35dvh, 2377px);
   }
 
   .home__tag {
-    top: 80px;
+    top: 121px;
   }
 
   .home__tag-rotator {

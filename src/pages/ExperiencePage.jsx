@@ -24,19 +24,19 @@ const EXPERIENCES = [
   {
     id: 'huemind',
     company: 'Huemind Digital Marketing',
-    role: 'Shopify Website Developer',
+    role: 'Full Stack & Shopify Developer',
     status: 'Currently working',
-    period: 'Jul 2026 – Present',
+    period: 'Jan 2026 – Present',
     location: 'Dharmapuri, India',
     type: 'Full-time',
-    duration: 'Jul 2026 – Present',
+    duration: 'Jan 2026 – Present',
     index: '01',
     category: 'Current Role',
     accent: '#22c55e',
     badgeType: 'active',
     icon: <FaShopify />,
     summary:
-      'Building and customizing Shopify Online Store 2.0 themes, ERP backend systems, and Admin API integrations.',
+      'Full-stack and Shopify development: Live Store 2.0 themes, Opalline jewelry ERP (NestJS, Prisma, PostgreSQL), and Admin API / GraphQL integrations.',
     featuredProject: {
       name: 'Opal Line — Jewelry ERP',
       status: 'In progress',
@@ -67,6 +67,11 @@ const EXPERIENCES = [
     ],
     workItems: [
       {
+        icon: <FaShopify />,
+        title: 'The World Of Nerds — Live Shopify Store',
+        desc: 'Develop and manage theworldofnerds.com (pan-India anime & collectibles store): Liquid mega-menu, tabbed showcases, bundles, predictive search, cart drawer, wishlist, SEO, Meta Pixel, reviews, and Instagram feed. Day-to-day products, collections, and promotions.',
+      },
+      {
         icon: <BsGem />,
         title: 'Opal Line — Jewelry ERP Platform',
         desc: 'Full-stack jewelry billing ERP for a 92.5 sterling silver brand on Shopify. Shopify as storefront + custom backend for pricing, GST billing, and bulk silver rate sync via BullMQ + Redis.',
@@ -88,7 +93,7 @@ const EXPERIENCES = [
       },
     ],
     stats: [
-      { value: '2mo+', label: 'Experience', sub: 'Jul 2026 – Present · Dharmapuri' },
+      { value: '10mo', label: 'Experience', sub: 'Jan 2026 – Present · Dharmapuri' },
       { value: '8+', label: 'Tech Tools', sub: 'Shopify · NestJS · Prisma · BullMQ' },
     ],
     takeaways: [

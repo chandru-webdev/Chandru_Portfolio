@@ -22,11 +22,11 @@ const UPDATED = 'Today'
 const EXPERIENCES = [
   {
     company: 'Huemind Digital Marketing',
-    role: 'Shopify Website Developer',
-    location: 'Chennai, India',
+    role: 'Full Stack & Shopify Developer',
+    location: 'Dharmapuri, India',
     status: 'Current',
     statusType: 'current',
-    period: 'Jul 2026 – Present',
+    period: 'Jan 2026 – Present',
     icon: <FiShoppingBag />,
     accent: '#22c55e',
     tags: [
@@ -62,12 +62,12 @@ const HIGHLIGHTS = [
   {
     icon: <FaGraduationCap />,
     title: 'Experience',
-    desc: 'Huemind (Shopify Dev) & Accent Technosoft',
+    desc: 'Huemind (Full Stack & Shopify) & Accent Technosoft · 10mo',
   },
   {
     icon: <FiLayers />,
-    title: '7+ Projects',
-    desc: 'Kattadam, Zayra, Velzo, Crypto Trading, Modern Agency',
+    title: '10+ Projects',
+    desc: 'Kattadam, Zayra, World Of Nerds, ATMR-Bot, Velzo, Modern Agency',
   },
   {
     icon: <FiAward />,
@@ -78,9 +78,9 @@ const HIGHLIGHTS = [
 
 const STATS = [
   { value: '7.8', label: 'CGPA' },
-  { value: '7+', label: 'Projects' },
+  { value: '10+', label: 'Projects' },
   { value: '3', label: 'Certificates' },
-  { value: 'Shopify', label: 'Developer' },
+  { value: '10mo', label: 'Experience' },
 ]
 
 const fadeUp = {
@@ -141,12 +141,12 @@ const ResumePage = () => {
                   <i />
                 </span>
                 <span className="resume-preview__filename">
-                  chandru_resume.pdf · 1 page PDF
+                  {RESUME_FILENAME} · PDF
                 </span>
               </div>
               <div className="resume-preview__frame">
                 <iframe
-                  src={`${RESUME_PDF}?v=20260825_v2#toolbar=0&navpanes=0`}
+                  src={`${RESUME_PDF}?v=20261112#toolbar=0&navpanes=0`}
                   title="Resume preview"
                 />
               </div>
@@ -169,7 +169,7 @@ const ResumePage = () => {
                   experience, education, and certifications.
                 </p>
                 <a
-                  href={RESUME_PDF}
+                  href={`${RESUME_PDF}?v=20261112`}
                   download={RESUME_FILENAME}
                   className="resume-download__btn"
                 >
@@ -211,20 +211,20 @@ const ResumePage = () => {
               >
                 <p className="resume-summary__label">PROFESSIONAL SUMMARY</p>
                 <p className="resume-summary__text">
-                  <strong>Java Full Stack Developer</strong> with hands-on
-                  experience building secure REST APIs using{' '}
-                  <strong>Spring Boot</strong>, implementing{' '}
-                  <strong>JWT authentication</strong>, and developing responsive
-                  frontends with <strong>React</strong>. Currently working as a{' '}
+                  <strong>Java Full Stack Developer</strong> skilled in React.js,
+                  Next.js, TypeScript, Node.js, REST APIs, JWT authentication, and
+                  MySQL/PostgreSQL. Working as a{' '}
                   <span className="text-highlight--green">
-                    Shopify Developer at Huemind Digital Marketing
+                    Full Stack &amp; Shopify Developer at Huemind Digital
+                    Marketing
                   </span>{' '}
-                  — building and customizing Shopify themes using Liquid and the
-                  Admin API. Building{' '}
-                  <span className="text-highlight--green">Zayra</span>, a
-                  full-stack jewelry ERP with NestJS, Prisma, and Shopify
-                  integration. Experienced in MySQL, MongoDB, and full project
-                  lifecycle from design to deployment.
+                  — built <strong>Opalline</strong> (jewelry billing ERP) and{' '}
+                  <strong>The World Of Nerds</strong> (live Shopify store).
+                  Freelance: <strong>Kattadam</strong> (construction marketplace)
+                  and <strong>MM Brandvista</strong> (agency website). Also Shopify
+                  Liquid, Admin API, GraphQL, Postman, AWS EC2, and Git/GitHub.
+                  B.Sc. IT, Karpagam Academy (2022–2025, CGPA 7.8). Focus on
+                  clean, scalable, production-ready apps end to end.
                 </p>
                 <div className="resume-summary__location">
                   <FiMapPin aria-hidden="true" />

@@ -45,7 +45,7 @@ const Home = () => {
         transition={{ duration: 1.1, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
       >
         <img
-          src="/home-portrait.png"
+          src="/home-portrait.jpg"
           alt="Chandru"
           className="profile-placeholder"
         />
@@ -90,7 +90,7 @@ const Home = () => {
       <motion.div
         className="home__marquee"
         initial={{ opacity: 0, y: 60 }}
-        animate={{ opacity: 0.22, y: 0 }}
+        animate={{ opacity: 0.42, y: 0 }}
         transition={{ duration: 1.2, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
         aria-hidden="true"
       >
