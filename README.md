@@ -14,7 +14,7 @@ A cinematic, monochrome, Apple-inspired portfolio homepage built with **React + 
 
 ```bash
 cd portfolio
-npm install
+npm install   
 npm run dev
 ```
 
