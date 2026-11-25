@@ -20,6 +20,7 @@ npm run dev
 
 Then open the URL Vite prints (usually `http://localhost:5173`).
 
+   
 ## Scripts
 
 | Command           | What it does                          |
