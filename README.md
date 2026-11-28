@@ -33,7 +33,7 @@ Then open the URL Vite prints (usually `http://localhost:5173`).
 
 ```
 portfolio/
-├─ index.html
+├─ index.html               
 ├─ package.json
 ├─ vite.config.js
 └─ src/
